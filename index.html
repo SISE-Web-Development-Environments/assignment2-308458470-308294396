@@ -1,21 +1,188 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
+		<script src="resources/js/jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<script src="resources/js/bootstrap.js"></script>
+		<script src="resources/js/bootstrap_datepicker.js"></script>
+		<script src ="resources/js/jquery.validate.js"></script>
+		<script src = "resources/js/validate.js"></script>
+		<script src = "resources/js/game.js"></script>
+		
+		<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+		<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+		<!-- Inline CSS based on choices in "Settings" tab -->
+		<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
+
 	</head>
 
 	<body>
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
+		<div class="container">
+			<header>
+			</header>
+			<menu>
+				<div class="nav">
+					<a onclick="showWelcome()" href="#welcom">Welcome</a>
+					<a onclick="showSignUp()" href="#signUp">Register</a>
+					<a onclick="showLogin()" href="#login">Login</a>
+					<a onclick="showAbout()" href="#about">About</a>
+				</div>
+			</menu>
 		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
+
+		<content>
+
+		<div id="welcome" class="welcome" style="display:none;">
+			<p>Welcome!</p>
+			<button onclick="showSignUp()">Sign Up</button>
+			<button onclick="showLogin()">Login</button>
 		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
+
+		<div id="signUp" class="signUp" style="display:none;">
+			<p>sign up</p>
+			<form id="signUpForm">
+				<div>
+					<label for="useName"><b>User Name</b></label>
+					<input type="text" placeholder="Enter UserName" name="userName">
+				</b>
+
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="password">
+			</br>
+					  
+					<label for="email"><b>Email</b></label>
+					  <input type="text" placeholder="Enter Email" name="email">
+					</br>
+
+				  	<label for="firstName"><b>First Name</b></label>
+					<input type="text" placeholder="Enter First Name" name="firstName">
+
+					<label for="lastName"><b>Last Name</b></label>
+					<input type="text" placeholder="Enter Last Name" name="lastName">
+				</br>
+
+					<label for="birthday"><b>Birthdate</b></label>
+					   <div class="col-sm-10">
+						<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+					   </div>
+					</br>
+					<button type="button" onclick="register(userName.value, password.value)">Submit</button>
+				</div>
+			</form>
+
 		</div>
+		<div id="login" class="login" style="display:none;">
+			<p>login</p>
+			<form>
+				<div>
+					<label for="useName"><b>User Name</b></label>
+					<input type="text" placeholder="Enter UserName" name="username">
+					</b>
+
+					<label for="psw"><b>Password</b></label>
+					<input type="password" placeholder="Enter Password" name="passw">
+					</br>
+				</div>
+				<button type="button" onclick="checkUserInDB(username.value, passw.value)">Submit</button>
+			  </form>
+
+		</div>
+
+		<div id="settings" class="settings" style="display:none;">
+			<p>settings</p>
+			<form id="settingsForm">
+			<label for="KeyUp"><b>Key Up</b></label>
+			<input id="keyUpPressed" type="text" placeholder="Press any key" name="keyUp" onkeydown="keyPressed(event)">
+			<input id="keyUpPresseddd" type="text" value="" name="keyUpPresseddd">
+			</br>
+			<label for="KeyDown"><b>Key Down</b></label>
+			<input id="keyDownPressed" type="text" placeholder="Press any key" name="keyDown" onkeydown="keyPressed(event)">
+			</br>
+			<label for="KeyLeft"><b>Key Left</b></label>
+			<input id="keyLeftPressed" type="text" placeholder="Press any key" name="keyLeft" onkeydown="keyPressed(event)">
+			</br>
+			<label for="KeyRight"><b>Key Right</b></label>
+			<input id="keyRightPressed" type="text" placeholder="Press any key" name="keyRight" onkeydown="keyPressed(event)">
+			</br>
+			<label for="numBalls"><b>Number of Balls (50-90)</b></label>
+			<input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
+
+			<label for="colors"><b>Three different colors for the balls</b></label>
+			<select id="color1" name="Color1"> 
+				<option value="">-- Color --</option> 
+				<option value="Blue">Blue</option> 
+				<option value="Green">Green</option> 
+				<option value="Yellow">Yellow</option> 
+				<option value="Red">Red</option> 
+			</select> 
+
+			<select id="color2" name="Color2"> 
+				<option value="">-- Color --</option> 
+				<option value="Blue">Blue</option> 
+				<option value="Green">Green</option> 
+				<option value="Yellow">Yellow</option> 
+				<option value="Red">Red</option> 
+			</select> 
+
+			<select id="color3" name="Color3"> 
+				<option value="">-- Color --</option> 
+				<option value="Blue">Blue</option> 
+				<option value="Green">Green</option> 
+				<option value="Yellow">Yellow</option> 
+				<option value="Red">Red</option> 
+			</select> 
+
+			<label for="time"><b>Time for game</b></label>
+			<input id="time" type="number" placeholder="Enter number greater than 60 seconds" name="timeOfGame" value="60">
+
+			<label for="monster"><b>Number of monsters</b></label>
+			<select id="monsters" name="numOfMonsters"> 
+				<option value="">-- monster --</option> 
+				<option value="1">1</option> 
+				<option value="2">2</option> 
+				<option value="3">3</option> 
+				<option value="4">4</option> 
+			</select> 
+
+			<button type="button" onclick="randomSettings()">Random Settings</button>
+			<button type="button" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, monsters.value)">Start New Game</button>
+		</form>
+
+		</div>
+		<div id="about" class="about" style="display:none;">
+			<p>about</p>
+		</div>
+
+		<div class="board" style="display:none;">
+			<div id="score">
+				<label for="lblScore">SCORE:</label>
+				<input id="lblScore" type="text" />
+			</div>
+			<div id="time">
+				<label for="lblTime">TIME:</label>
+				<input id="lblTime" type="text" />
+			</div>
+			<div id="game">
+				<canvas id="canvas" height="600" width="600"></canvas>
+			</div>
+		</div>
+	</content>
+
+	<footer></footer>
+
+	<script>
+		$(document).ready(function(){
+			var date_input=$('input[name="date"]'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'mm/dd/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			})
+		})
+	</script>
+
 	</body>
 </html>
