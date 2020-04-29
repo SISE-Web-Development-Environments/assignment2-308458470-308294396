@@ -8,6 +8,7 @@
 		<script src ="resources/js/jquery.validate.js"></script>
 		<script src = "resources/js/validate.js"></script>
 		<script src = "resources/js/game.js"></script>
+		<script src = "resources/js/drawGame.js"></script>
 		
 		<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 		<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
@@ -62,12 +63,12 @@
 					<input type="text" placeholder="Enter Last Name" name="lastName">
 				</br>
 
-					<label for="birthday"><b>Birthdate</b></label>
+					<label for="dateOfBirth"><b>Birthdate</b></label>
 					   <div class="col-sm-10">
-						<input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+						<input class="form-control" id="dateOfBirth" name="date" placeholder="MM/DD/YYYY" type="text"/>
 					   </div>
 					</br>
-					<button type="button" onclick="register(userName.value, password.value)">Submit</button>
+					<button type="button" onclick="register(userName.value, password.value, email.value, firstName.value, lastName.value, dateOfBirth.value)">Submit</button>
 				</div>
 			</form>
 
@@ -109,6 +110,7 @@
 			<input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
 
 			<label for="colors"><b>Three different colors for the balls</b></label>
+			<label for="colors"><b>5 points balls</b></label>
 			<select id="color1" name="Color1"> 
 				<option value="">-- Color --</option> 
 				<option value="Blue">Blue</option> 
@@ -117,6 +119,7 @@
 				<option value="Red">Red</option> 
 			</select> 
 
+			<label for="colors"><b>15 points balls</b></label>
 			<select id="color2" name="Color2"> 
 				<option value="">-- Color --</option> 
 				<option value="Blue">Blue</option> 
@@ -125,6 +128,7 @@
 				<option value="Red">Red</option> 
 			</select> 
 
+			<label for="colors"><b>25 points balls</b></label>
 			<select id="color3" name="Color3"> 
 				<option value="">-- Color --</option> 
 				<option value="Blue">Blue</option> 
@@ -163,8 +167,16 @@
 				<label for="lblTime">TIME:</label>
 				<input id="lblTime" type="text" />
 			</div>
+			<div id="playerName">
+				<label for="lblPlayer">Player:</label>
+				<input id="lblPlayer" type="text" />
+			</div>
 			<div id="game">
-				<canvas id="canvas" height="600" width="600"></canvas>
+				<canvas id="canvas" height="450" width="450"></canvas>
+				<img id="blueGhost" src="resources/images/blueGhost.jpg" alt="inky">
+				<img id="orangeGhost" src="resources/images/orangeGhost.jpg" alt="clyde">
+				<img id="pinkGhost" src="resources/images/pinkGhost.jpg" alt="pinky">
+				<img id="redGhost" src="resources/images/redGhost.jpg" alt="blinky">
 			</div>
 		</div>
 	</content>

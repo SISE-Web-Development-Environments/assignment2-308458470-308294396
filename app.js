@@ -1,7 +1,6 @@
-var context;
 
 var userCounter = 0;
-
+var playerUserName
 var keyUp;
 var keyDown;
 var keyLeft;
@@ -10,7 +9,7 @@ var keyRight;
 $(document).ready(function() {
 	createUserDB();
 	//showWelcome();
-	context = canvas.getContext("2d");
+	//context = canvas.getContext("2d");
 	//Start();
 });
 
@@ -25,12 +24,19 @@ function createUserDB() {
 }
 
 
-function register(userName, pass) {
+function register(userName, pass, email, firstName, lastName, dateOfBirth) {
 	alert("Im in register");
 	if (validRegisteration()) {
 		var storedNames = JSON.parse(sessionStorage.getItem("names"));
 		console.log(storedNames);
-		storedNames[userCounter++]= ({userName: userName, pass: pass});
+		storedNames[userCounter++]= ({
+			userName: userName,
+			pass: pass,
+			email: email,
+			firstName: firstName,
+			lastName: lastName,
+			dateOfBirth: dateOfBirth
+			});
 		sessionStorage.setItem("names", JSON.stringify(storedNames));
 		alert("The user added");
 		showWelcome();
@@ -44,17 +50,25 @@ function register(userName, pass) {
 //add function of validate to login page
 
 function checkUserInDB(username, passw) {
+	var isUserFound = false;
 	var storedNames = JSON.parse(sessionStorage.getItem("names"));
-	let result = storedNames.filter(user => {return user.userName == username && user.pass == passw})
-	if (result.length == 1) {
-		showSettings();
-	}	
+	let result = storedNames.filter(user => {
+	 	if(user.userName == username && user.pass == passw){
+			 isUserFound = true;
+			 playerUserName = user.userName;
+			 showSettings();
+		 }
+	})
+
+	if(!isUserFound){
+		alert("The user name or password are incorrect. Please try again.")
+	}
 }
 
 function startNewGame(numBalls, color1, color2, color3, time, numMonsters) {
 	if (validSettings()){
-		showGame(keyUp, keyDown, keyLeft, keyRight, numBalls, numMonsters, color1, color2, color3, context);
-		Start();
+		showGame();
+		Start(keyUp, keyDown, keyLeft, keyRight, numBalls, numMonsters, color1, color2, color3, time, playerUserName);
 		alert("Start the game");
 	}
 
