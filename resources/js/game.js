@@ -22,6 +22,9 @@ var counter15P;
 var counter25P;
 var time;
 var playerName;
+var life;
+var pacmenPicId = [];
+var move;
 
 function Start(
   up,
@@ -51,24 +54,16 @@ function Start(
   );
   var cnt = 100;
   var pacman_remain = 1;
-  var monsterRemain = numMonsters;
-
   for (var i = 0; i < 15; i++) {
-    //board[i] = new Array();
-    //put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
     for (var j = 0; j < 15; j++) {
-      if (board[i][j] != 4) {
+      if (board[i][j] != 4 && board[i][j] != 9) {
         var randomNum = Math.random();
         if (randomNum <= (1.0 * numBalls) / cnt) {
           var ballPick = getRandomBall();
           updateBallsCounter(ballPick);
           board[i][j] = ballPick;
-        } else if (randomNum < (1.0 * (monsterRemain + numBalls)) / cnt) {
-          ghostLocations[monsterRemain - 1].i = i;
-          ghostLocations[monsterRemain - 1].j = j;
-          monsterRemain--;
-          board[i][j] = 9;
-        } else if (randomNum < (1.0 * (pacman_remain + numBalls)) / cnt) {
+        } 
+        else if (randomNum < (1.0 * (pacman_remain + numBalls)) / cnt) {
           shape.i = i;
           shape.j = j;
           pacman_remain--;
@@ -130,18 +125,54 @@ function setup(
   counter5P = numBalls - counter25P - counter15P;
   playerName = playerUserName;
   score = 0;
+  move = 3;
   pac_color = 'yellow';
   keyUp = up;
   keyDown = down;
   keyLeft = left;
   keyRight = right;
   numMonsters = numOfMonsters;
+  life = 5;
   start_time = new Date();
   for (var i = 0; i < numMonsters; i++) {
     ghostLocations[i] = new Object();
   }
   ghostsId = ['redGhost', 'blueGhost', 'orangeGhost', 'pinkGhost'];
   board = initWalls();
+  setGhostsOnBoard();
+  pacmenPicId = ['pacUp', 'pacDown', 'pacLeft', 'pacRight'];
+}
+
+function setGhostsOnBoard() {
+  for (var i = 0; i < numMonsters; i++) {
+    setGhostLocation(i);
+  }
+}
+
+function setGhostLocation(ghostNum) {
+  var x1;
+  var y1;
+  switch(ghostNum) {
+    case 3:
+      x1 = 13;
+      y1 = 13;
+      break;
+    case 2:
+      x1 = 13;
+      y1 = 1;
+      break;
+    case 1:
+      x1 = 1;
+      y1 = 13;
+      break;
+    case 0:
+      x1 = 1;
+      y1 = 1;
+      break;
+  }
+  ghostLocations[ghostNum].i = x1;
+  ghostLocations[ghostNum].j = y1;
+  board[x1][y1] = 9;
 }
 
 function updateBallsCounter(ballPick) {
@@ -205,29 +236,36 @@ function UpdatePosition() {
   if (x == 1) {
     if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
       shape.j--;
+      move = 0;
     }
   }
   if (x == 2) {
     if (shape.j < 14 && board[shape.i][shape.j + 1] != 4) {
       shape.j++;
+      move = 1;
     }
   }
   if (x == 3) {
     if (shape.i > 0 && board[shape.i - 1][shape.j] != 4) {
       shape.i--;
+      move = 2;
     }
   }
   if (x == 4) {
     if (shape.i < 14 && board[shape.i + 1][shape.j] != 4) {
       shape.i++;
+      move = 3;
     }
   }
-  if (board[shape.i][shape.j] == 1) {
-    score++;
-  }
+
+  updateScore(board[shape.i][shape.j]);
+
   board[shape.i][shape.j] = 2;
   var currentTime = new Date();
   time_elapsed = (currentTime - start_time) / 1000;
+  if (time_elapsed >=  time) {
+    gameOver();
+  }
   if (score >= 20 && time_elapsed <= 10) {
     pac_color = 'green';
   }
@@ -236,6 +274,20 @@ function UpdatePosition() {
     window.alert('Game completed');
   } else {
     Draw();
+  }
+}
+
+function updateScore(ballType) {
+  switch(ballType) {
+    case 5:
+      score+=5;
+      break;
+    case 15:
+        score+=15;
+        break;
+    case 25:
+      score+=25;
+      break;
   }
 }
 
@@ -329,7 +381,28 @@ function getBestMove(k) {
 
   ghostLocations[k].i = tmpLocation.i;
   ghostLocations[k].j = tmpLocation.j;
+
+  //hitting pacmen
+  if (board[ghostLocations[k].i][ghostLocations[k].j] == 2) {
+    life--;
+    score=-10;
+    if (life == 0) {
+      gameOver();
+    }
+
+    else {
+      var location = findRandomEmptyCell(board);
+      shape.i = location[0];
+      shape.j = location[1];
+      board[shape.i][shape.j] = 2;
+    }
+  }
+
   board[ghostLocations[k].i][ghostLocations[k].j] = 9;
+}
+
+function gameOver() {
+  alert("Your'e a losser! :( :( :(")
 }
 
 function initWalls() {
