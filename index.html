@@ -34,7 +34,7 @@
 
 			<div class="content">
 				<div id="welcome" class="welcome" style="display:none;">
-					<h2>Welcome!</h2>
+					<h2 class="headers">Welcome!</h2>
 					<label>
 						<span> </span><input type="button" class="buttons" value="Sign Up" onclick="showSignUp()">
 					</label>
@@ -46,8 +46,8 @@
 				</div>
 	
 				<div id="signUp" class="signUp" style="display:none;">
-					<p>sign up</p>
 					<form id="signUpForm" class="form-style-4">
+						<h3 class="headers">Sign Up</h3>
 						<label for="useName">
 						<span>User Name</span><input type="text" placeholder="Enter UserName" name="userName">
 						</label>
@@ -82,8 +82,8 @@
 				</div>
 	
 				<div id="login" class="login" style="display:none;">
-					<p>login</p>
 					<form class="form-style-4"> 
+						<h4 class="headers">Login</h4>
 						<div>
 							<label for="userName">
 							<span>User Name</span><input type="text" placeholder="Enter UserName" name="username">
@@ -102,66 +102,89 @@
 				</div>
 	
 				<div id="settings" class="settings" style="display:none;">
-					<p>settings</p>
-					<form id="settingsForm">
-						<label for="KeyUp"><b>Key Up</b></label>
-						<input id="keyUpPressed" type="text" placeholder="Press any key" name="keyUp" onkeydown="keyPressed(event)">
-						<input id="keyUpPresseddd" type="text" value="" name="keyUpPresseddd">
+					<form id="settingsForm" class="form-style-4">
+						<h5 class="headers">Settings</h5>
+						<div>
+							<label for="KeyUp">
+							<span>Key Up</span><input id="keyUpPressed" type="text" placeholder="Press any key" name="keyUp" onkeydown="keyPressed(event)">
+						</div>
+						<div>
+							<label for="KeyDown">
+							<span>Key Down</span><input id="keyDownPressed" type="text" placeholder="Press any key" name="keyDown" onkeydown="keyPressed(event)">
+						</div>
+						<div>
+							<label for="KeyLeft">
+							<span>Key Left</span><input id="keyLeftPressed" type="text" placeholder="Press any key" name="keyLeft" onkeydown="keyPressed(event)">
+						</div>
+						<div>
+							<label for="KeyRight">
+							<span>Key Right</span><input id="keyRightPressed" type="text" placeholder="Press any key" name="keyRight" onkeydown="keyPressed(event)">
+						</div>
+						<div>
+							<label for="numBalls">
+							<span>Number of Balls (50-90)</span><input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
+						</div>
 						</br>
-						<label for="KeyDown"><b>Key Down</b></label>
-						<input id="keyDownPressed" type="text" placeholder="Press any key" name="keyDown" onkeydown="keyPressed(event)">
 						</br>
-						<label for="KeyLeft"><b>Key Left</b></label>
-						<input id="keyLeftPressed" type="text" placeholder="Press any key" name="keyLeft" onkeydown="keyPressed(event)">
+						<div>
+							<label for="colors"><b>Three different colors  for the balls</b>
+						</div>
 						</br>
-						<label for="KeyRight"><b>Key Right</b></label>
-						<input id="keyRightPressed" type="text" placeholder="Press any key" name="keyRight" onkeydown="keyPressed(event)">
+						<div>
+							<label for="colors"><span>5 points balls</span>
+							<select id="color1" type="option" name="Color1"> 
+								<option type="option" value="">-- Color --</option> 
+								<option type="option" value="Blue">Blue</option> 
+								<option type="option" value="Green">Green</option> 
+								<option type="option" value="Yellow">Yellow</option> 
+								<option type="option" value="Red">Red</option>  
+							</select> 
+						</div>
 						</br>
-						<label for="numBalls"><b>Number of Balls (50-90)</b></label>
-						<input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
-		
-						<label for="colors"><b>Three different colors for the balls</b></label>
-						<label for="colors"><b>5 points balls</b></label>
-						<select id="color1" name="Color1"> 
-							<option value="">-- Color --</option> 
-							<option value="Blue">Blue</option> 
-							<option value="Green">Green</option> 
-							<option value="Yellow">Yellow</option> 
-							<option value="Red">Red</option> 
-						</select> 
-		
-						<label for="colors"><b>15 points balls</b></label>
-						<select id="color2" name="Color2"> 
-							<option value="">-- Color --</option> 
-							<option value="Blue">Blue</option> 
-							<option value="Green">Green</option> 
-							<option value="Yellow">Yellow</option> 
-							<option value="Red">Red</option> 
-						</select> 
-		
-						<label for="colors"><b>25 points balls</b></label>
-						<select id="color3" name="Color3"> 
-							<option value="">-- Color --</option> 
-							<option value="Blue">Blue</option> 
-							<option value="Green">Green</option> 
-							<option value="Yellow">Yellow</option> 
-							<option value="Red">Red</option> 
-						</select> 
-		
-						<label for="time"><b>Time for game</b></label>
-						<input id="time" type="number" placeholder="Enter number greater than 60 seconds" name="timeOfGame" value="60">
-		
-						<label for="monster"><b>Number of monsters</b></label>
-						<select id="monsters" name="numOfMonsters"> 
-							<option value="">-- monster --</option> 
-							<option value="1">1</option> 
-							<option value="2">2</option> 
-							<option value="3">3</option> 
-							<option value="4">4</option> 
-						</select> 
-		
-						<button type="button" onclick="randomSettings()">Random Settings</button>
-						<button type="button" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, monsters.value)">Start New Game</button>
+						<div>
+							<label for="colors"><span>15 points balls</span>
+							<select id="color2" type="option" name="Color2"> 
+								<option type="option" value="">-- Color --</option> 
+								<option type="option" value="Blue">Blue</option> 
+								<option type="option" value="Green">Green</option> 
+								<option type="option" value="Yellow">Yellow</option> 
+								<option type="option" value="Red">Red</option> 
+							</select> 
+						</div>
+						</br>
+						<div>
+							<label for="colors"><span>25 points balls</span>
+							<select id="color3" type="option" name="Color3"> 
+								<option type="option" value="">-- Color --</option> 
+								<option type="option" value="Blue">Blue</option> 
+								<option type="option" value="Green">Green</option> 
+								<option type="option" value="Yellow">Yellow</option> 
+								<option type="option" value="Red">Red</option> 
+							</select> 
+						</div>
+						</br>
+						</br>
+						</br>
+						<div>
+							<label for="time"><span>Time for game</span>
+							<input id="time" type="number" placeholder="Enter number greater than 60 seconds" name="timeOfGame" value="60">
+						</div>
+						</br>
+						<div>
+							<label for="ghost"><span>Number of ghosts</span>
+							<select id="ghosts" type="option" name="numOfGhosts"> 
+								<option type="option" value="">-- Ghosts --</option> 
+								<option type="option" value="1">1</option> 
+								<option type="option" value="2">2</option> 
+								<option type="option" value="3">3</option> 
+								<option type="option" value="4">4</option> 
+							</select> 
+						</div>
+						</br>
+						<div>
+							<input type="button" value="Random Settings" class="buttons" onclick="randomSettings()"/>
+							<input type="button" value="Start New Game" class="buttons" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, ghosts.value)"/>
+						</div>
 					</form>
 				</div>
 

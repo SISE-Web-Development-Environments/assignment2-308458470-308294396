@@ -101,7 +101,8 @@ function validSettings() {
                 required: true
             },
             keyRight: {
-                required: true
+                required: true,
+                diffKeys: true
             },
             numBalls: {
                 required: true,
@@ -125,9 +126,9 @@ function validSettings() {
                 required: true,
                 min: 60
             },
-            monsters: {
+            ghosts: {
                 required: true,
-                monsterNotChosen: true
+                ghostNotChosen: true
             }
         
         },
@@ -163,8 +164,8 @@ function validSettings() {
                 required:  "Please define the time",
                 min:  "The minumun time is 60 seconds"
             },
-            monsters: {
-                required:  "Please choose the number of monsters"
+            ghosts: {
+                required:  "Please choose the number of ghosts"
             }
         }
 
@@ -172,6 +173,13 @@ function validSettings() {
     return $("#settingsForm").valid();
 
 };
+
+
+$.validator.addMethod("diffKeys", function(value, element) {
+
+    return keyUp != keyDown && keyUp != keyLeft && keyUp != keyRight && 
+    keyDown != keyLeft && keyDown != keyRight && keyLeft != keyRight;
+}, "Please choose different keys");
 
 $.validator.addMethod("diffColors", function(value, element) {
     var color1 = $("#Color1").value;
@@ -196,7 +204,7 @@ $.validator.addMethod("color3NotChosen", function(value, element) {
     return color != "";
 }, "Please choose the third color");
 
-$.validator.addMethod("monsterNotChosen", function(value, element) {
-    var monster = $("#monster").value;
-    return monster != "";
-}, "Please choose the number of monsters");
+$.validator.addMethod("ghosts", function(value, element) {
+    var ghost = $("#numOfGhosts").value;
+    return ghost != "";
+}, "Please choose the number of ghosts");

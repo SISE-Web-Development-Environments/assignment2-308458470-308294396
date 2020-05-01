@@ -8,9 +8,7 @@ var keyRight;
 
 $(document).ready(function() {
 	createUserDB();
-	//showWelcome();
-	//context = canvas.getContext("2d");
-	//Start();
+	showWelcome();
 });
 
 function createUserDB() {
@@ -82,7 +80,7 @@ function randomSettings() {
 	document.getElementById("keyRightPressed").value = "ArrowRight";
 	document.getElementById("numBalls").value = Math.floor(Math.random() * 40) + 50;
 	document.getElementById("time").value = Math.floor(Math.random() * 30) + 60;
-	document.getElementById("monsters").value = (Math.floor(Math.random() * 3) + 1).toString();
+	document.getElementById("ghosts").value = (Math.floor(Math.random() * 3) + 1).toString();
 	document.getElementById("color1").value = "Blue";
 	document.getElementById("color2").value = "Red";
 	document.getElementById("color3").value = "Green";
@@ -124,13 +122,16 @@ function showWelcome() {
 	$(".welcome").show();
 	$(".signUp").hide();
 	$(".login").hide();
+	$(".settings").hide();
 	$(".board").hide();
+	$(".about").hide();
 }
 
 function showSignUp(){
 	$(".signUp").show();
 	$(".welcome").hide();
 	$(".login").hide();
+	$(".settings").hide();
 	$(".board").hide();
 	$(".about").hide();
 }
@@ -139,6 +140,7 @@ function showLogin(){
 	$(".login").show();
 	$(".welcome").hide();
 	$(".signUp").hide();
+	$(".settings").hide();
 	$(".board").hide();
 	$(".about").hide();
 }
@@ -148,6 +150,7 @@ function showAbout(){
 	$(".welcome").hide();
 	$(".login").hide();
 	$(".signUp").hide();
+	$(".settings").hide();
 	$(".board").hide();
 }
 
