@@ -1,12 +1,17 @@
 function Draw() {
-  var ghostDraw = 0;
+  //board
   canvas.width = canvas.width; //clean board
   canvas.style.backgroundColor = 'black';
+
+  //life
+  canvaslife.width = canvaslife.width;
+	canvaslife.style.backgroundColor = "black";
 
   lblPlayer.value = playerName;
   lblScore.value = score;
   lblTime.value = time_elapsed;
-  lblLife.value = life;
+  drawLife();
+
   for (var i = 0; i < 15; i++) {
     for (var j = 0; j < 15; j++) {
       var center = new Object();
@@ -22,12 +27,15 @@ function Draw() {
         drawBalls(center.x, center.y, color25P);
       } else if (board[i][j] == 4) {
         drawWalls(center.x, center.y);
-      } else if (board[i][j] == 9) {
-        drawMonster(center.x, center.y, ghostDraw);
-        ghostDraw++;
-      } 
+      } else if (board[i][j] == 30) {
+        drawCandy(center.x, center.y);
+      }
     }
   }
+  if (isPenguinAlive) {
+    drawPenguin();
+  }
+    drawGhosts();
 }
 
 function drawPacman(centerX, centerY) {
@@ -49,9 +57,19 @@ function drawBalls(centerX, centerY, color) {
   context.fill();
 }
 
-function drawMonster(centerX, centerY, ghostDraw) {
-  var img = document.getElementById(ghostsId[ghostDraw]);
+function drawCandy(centerX, centerY) {
+  var img = document.getElementById(mycandy);
   context.drawImage(img, centerX - 15, centerY - 15);
+}
+
+function drawGhosts() {
+  for (var k = 0; k < numMonsters; k ++) {
+    var center = new Object();
+    center.x = ghostLocations[k].i * 30;
+    center.y = ghostLocations[k].j * 30;
+    var img = document.getElementById(ghostsId[k]);
+    context.drawImage(img, center.x, center.y);
+  }
 }
 
 function drawPath(centerX, centerY) {
@@ -59,4 +77,21 @@ function drawPath(centerX, centerY) {
   context.rect(centerX - 15, centerY - 15, 30, 30);
   context.fillStyle = 'black'; //color
   context.fill();
+}
+
+function drawPenguin() {
+  var center = new Object();
+  center.x = penguinShape.i * 30;
+  center.y = penguinShape.j * 30 - 5;
+  var img = document.getElementById("penguin");
+  context.drawImage(img, center.x, center.y);
+}
+
+function drawLife() {
+	var img = document.getElementById("lifePacmen");
+	var x = 0;
+	for (var i = 0; i < life; i++) {
+	  lifecontext.drawImage(img, x ,0);
+	  x+=30;
+	}
 }

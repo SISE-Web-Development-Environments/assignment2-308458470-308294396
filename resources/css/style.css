@@ -60,3 +60,11 @@ ul li a {
   font-family: 'retro';
   padding: 0 15px;
 }
+
+.playerDiv{
+  display: flex;
+  flex-direction: row;
+  font-family: 'retro';
+  color: white;
+  background-color: black;
+}

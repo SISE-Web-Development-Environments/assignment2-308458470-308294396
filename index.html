@@ -59,9 +59,8 @@
 
 						<label for="lastName"><b>Last Name</b></label>
 						<input type="text" placeholder="Enter Last Name" name="lastName">
-					</br>
-
-						<label for="dateOfBirth"><b>Birthdate</b></label>
+						</br>
+						<label for="dateOfBirth"><b>Date of birth</b></label>
 						<div class="col-sm-10">
 							<input class="form-control" id="dateOfBirth" name="date" placeholder="MM/DD/YYYY" type="text"/>
 						</div>
@@ -155,22 +154,24 @@
 				<p>about</p>
 			</div>
 
-			<div class="board" style="display:none;">
-				<div id="score">
-					<label for="lblScore">SCORE:</label>
-					<input id="lblScore" type="text" />
-				</div>
-				<div id="time">
-					<label for="lblTime">TIME:</label>
-					<input id="lblTime" type="text" />
-				</div>
-				<div id="playerName">
-					<label for="lblPlayer">Player:</label>
-					<input id="lblPlayer" type="text" />
-				</div>
-				<div id="playerLife">
-					<label for="lblLife">Life:</label>
-					<input id="lblLife" type="text" />
+			<div id="board" class="board" style="display:none;">
+				<div id="playerDiv" class="playerDiv"></div>
+					<div id="score">
+						<label for="lblScore">SCORE:</label>
+						<input id="lblScore" type="text" />
+					</div>
+					<div id="time">
+						<label for="lblTime">TIME:</label>
+						<input id="lblTime" type="text" />
+					</div>
+					<div id="playerName">
+						<label for="lblPlayer">Player:</label>
+						<input id="lblPlayer" type="text" />
+					</div>
+					<div id="playerLife">
+						<label for="lblLife">Life:</label>
+						<canvas id="canvaslife" height="40" width="100"></canvas>
+					</div>
 				</div>
 				<div id="game">
 					<canvas id="canvas" height="450" width="450"></canvas>
@@ -182,7 +183,14 @@
 					<img id="pacDown" src="resources/images/mspac_down.gif" alt="pacmanDown" style="display: none">
 					<img id="pacLeft" src="resources/images/mspac_left.gif" alt="pacmanLeft" style="display: none">
 					<img id="pacRight" src="resources/images/mspac_right.gif" alt="pacmanRight" style="display: none">
+					<img id="penguin" src="resources/images/penguin.png" alt="penguin" style="display: none">
+					<img id="apple" src="resources/images/fruit_apple.gif" alt="apple" style="display: none">
+					<img id="cherry" src="resources/images/fruit_cherry.gif" alt="cherry" style="display: none">
+					<img id="strawberry" src="resources/images/fruit_strawberry.gif" alt="strawberry" style="display: none">
+					<img id="pizza" src="resources/images/pizza.png" alt="pizza" style="display: none">
+					<img id="lifePacmen" src="resources/images/life.gif" alt="life" style="display: none">
 				</div>
+				
 			</div>
 		</div>
 

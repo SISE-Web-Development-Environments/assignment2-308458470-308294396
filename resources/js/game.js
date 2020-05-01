@@ -1,5 +1,7 @@
 var context;
+var lifecontext;
 var shape = new Object();
+var penguinShape = new Object();
 var ghostLocations = [];
 var ghostsId = [];
 var board;
@@ -25,6 +27,10 @@ var playerName;
 var life;
 var pacmenPicId = [];
 var move;
+var candyId = [];
+var mycandy;
+var candyLocation = new Object();
+var isPenguinAlive;
 
 function Start(
   up,
@@ -52,18 +58,36 @@ function Start(
     totalTime,
     playerUserName
   );
+
+  var keys = {};
+  window.addEventListener("keydown",
+      function(e){
+          keys[e.keyCode] = true;
+          switch(e.keyCode){
+              case 37: case 39: case 38:  case 40: // Arrow keys
+              case 32: e.preventDefault(); break; // Space
+              default: break; // do not block other keys
+          }
+      },
+  false);
+  window.addEventListener('keyup',
+      function(e){
+          keys[e.keyCode] = false;
+      },
+  false);
+
   var cnt = 100;
   var pacman_remain = 1;
   for (var i = 0; i < 15; i++) {
     for (var j = 0; j < 15; j++) {
-      if (board[i][j] != 4 && board[i][j] != 9) {
+      if (board[i][j] != 4) {
         var randomNum = Math.random();
         if (randomNum <= (1.0 * numBalls) / cnt) {
           var ballPick = getRandomBall();
           updateBallsCounter(ballPick);
           board[i][j] = ballPick;
         } 
-        else if (randomNum < (1.0 * (pacman_remain + numBalls)) / cnt) {
+        else if (isCellEmpty() && randomNum < (1.0 * (pacman_remain + numBalls)) / cnt) {
           shape.i = i;
           shape.j = j;
           pacman_remain--;
@@ -97,8 +121,11 @@ function Start(
     },
     false
   );
-  interval = setInterval(UpdatePosition, 150);
+  interval = setInterval(UpdatePosition, 100);
   setInterval(ghostsUpdatePosition, 500);
+  setInterval(penguinUpdatePosition, 500);
+  setInterval(showCandy, 8000);
+  //setInterval(showPizzaSlowMotion, 1000);
 }
 
 function setup(
@@ -115,6 +142,7 @@ function setup(
   playerUserName
 ) {
   context = canvas.getContext('2d');
+  lifecontext = canvaslife.getContext('2d');
   time = totalTime;
   numBalls = numOfBalls;
   color5P = color1;
@@ -140,7 +168,48 @@ function setup(
   ghostsId = ['redGhost', 'blueGhost', 'orangeGhost', 'pinkGhost'];
   board = initWalls();
   setGhostsOnBoard();
+  setPenguinOnBoard();
   pacmenPicId = ['pacUp', 'pacDown', 'pacLeft', 'pacRight'];
+  candyId = ['apple', 'cherry', 'strawberry'];
+  mycandy = null;
+  isPenguinAlive = true;
+}
+
+function isCellEmpty(x, y) {
+  //check if there is a ghost in the location
+  for (var k = 0; k < numMonsters; k++) {
+    if (ghostLocations[k].i == x && ghostLocations[k].j == y) {
+      return false;
+    }
+  }
+
+  //check if the penguin in the location
+  if (penguinShape.i == x && penguinShape.j == y) {
+    return false;
+  }
+
+  return true;
+}
+
+function showCandy() {
+  //there is no candy on board - need show candy
+  if (mycandy == null) {
+    mycandy = getRandomCandy();
+    var location = findRandomEmptyCell(board);
+    candyLocation.i = location[0];
+    candyLocation.j = location[1];
+    board[candyLocation.i][candyLocation.j] = 30;
+  }
+
+  //there id a candy on board - need to disappear candy
+  else {
+    board[candyLocation.i][candyLocation.j] = 0;
+    mycandy == null;
+  }
+}
+
+function getRandomCandy() {
+  return candyId[Math.floor(Math.random() * candyId.length)];
 }
 
 function setGhostsOnBoard() {
@@ -172,7 +241,27 @@ function setGhostLocation(ghostNum) {
   }
   ghostLocations[ghostNum].i = x1;
   ghostLocations[ghostNum].j = y1;
-  board[x1][y1] = 9;
+}
+
+function setPenguinOnBoard() {
+  if (isCellEmpty(1, 13)) {
+    penguinShape.i = 1;
+    penguinShape.j = 13;
+  }
+  else if (isCellEmpty(13,1)) {
+    penguinShape.i = 13;
+    penguinShape.j = 1;
+  }
+  else if (isCellEmpty(13, 13)) {
+    penguinShape.i = 13;
+    penguinShape.j = 13;
+  }
+  else {
+    var location = findRandomEmptyCell(board);
+    penguinShape.i = location[0];
+    penguinShape.j = location[1];
+  }
+
 }
 
 function updateBallsCounter(ballPick) {
@@ -208,7 +297,7 @@ function getRandomBall() {
 function findRandomEmptyCell(board) {
   var i = Math.floor(Math.random() * 14 + 1);
   var j = Math.floor(Math.random() * 14 + 1);
-  while (board[i][j] != 0) {
+  while (board[i][j] != 0 || !isCellEmpty(i, j) ) {
     i = Math.floor(Math.random() * 14 + 1);
     j = Math.floor(Math.random() * 14 + 1);
   }
@@ -269,7 +358,7 @@ function UpdatePosition() {
   if (score >= 20 && time_elapsed <= 10) {
     pac_color = 'green';
   }
-  if (score == 50) {
+  if (score >= 500 /* 50 */) {
     window.clearInterval(interval);
     window.alert('Game completed');
   } else {
@@ -278,6 +367,12 @@ function UpdatePosition() {
 }
 
 function updateScore(ballType) {
+  //catch the penguin
+  if (shape.i == penguinShape.i && shape.j == penguinShape.j) {
+    score+=50;
+    isPenguinAlive = false;
+  }
+
   switch(ballType) {
     case 5:
       score+=5;
@@ -293,7 +388,6 @@ function updateScore(ballType) {
 
 function ghostsUpdatePosition() {
   for (var k = 0; k < ghostLocations.length; k++) {
-    board[ghostLocations[k].i][ghostLocations[k].j] = 0;
     getBestMove(k);
   }
 }
@@ -307,8 +401,7 @@ function getBestMove(k) {
   //ghost go up
   if (
     ghostLocations[k].j > 0 &&
-    board[ghostLocations[k].i][ghostLocations[k].j - 1] != 4 &&
-    board[ghostLocations[k].i][ghostLocations[k].j - 1] != 9
+    board[ghostLocations[k].i][ghostLocations[k].j - 1] != 4 && isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i, 2) +
@@ -325,8 +418,7 @@ function getBestMove(k) {
   //ghost go down
   if (
     ghostLocations[k].j < 14 &&
-    board[ghostLocations[k].i][ghostLocations[k].j + 1] != 4 &&
-    board[ghostLocations[k].i][ghostLocations[k].j + 1] != 9
+    board[ghostLocations[k].i][ghostLocations[k].j + 1] != 4 && isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i, 2) +
@@ -344,8 +436,7 @@ function getBestMove(k) {
   //ghost go left
   if (
     ghostLocations[k].i > 0 &&
-    board[ghostLocations[k].i - 1][ghostLocations[k].j] != 4 &&
-    board[ghostLocations[k].i - 1][ghostLocations[k].j] != 9
+    board[ghostLocations[k].i - 1][ghostLocations[k].j] != 4 && isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i - 1, 2) +
@@ -363,8 +454,7 @@ function getBestMove(k) {
   //ghost go right
   if (
     ghostLocations[k].i < 14 &&
-    board[ghostLocations[k].i + 1][ghostLocations[k].j] != 4 &&
-    board[ghostLocations[k].i + 1][ghostLocations[k].j] != 9
+    board[ghostLocations[k].i + 1][ghostLocations[k].j] != 4 && isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i + 1, 2) +
@@ -384,6 +474,7 @@ function getBestMove(k) {
 
   //hitting pacmen
   if (board[ghostLocations[k].i][ghostLocations[k].j] == 2) {
+    board[ghostLocations[k].i][ghostLocations[k].j] = 0;
     life--;
     score=-10;
     if (life == 0) {
@@ -398,11 +489,58 @@ function getBestMove(k) {
     }
   }
 
-  board[ghostLocations[k].i][ghostLocations[k].j] = 9;
+}
+
+function penguinUpdatePosition() {
+  var movements = getLegalPenguinMove();
+  var chosenMove = movements[Math.floor(Math.random() * movements.length)];
+
+  switch(chosenMove) {
+    case 0:
+      penguinShape.j--;
+      break;
+    case 1:
+      penguinShape.j++;
+      break;
+    case 2:
+      penguinShape.i--;
+      break;
+    case 3:
+      penguinShape.i++;
+      break;
+  }
+
+  //meet the pacmen
+  if (board[penguinShape.i][penguinShape.j] == 2) {
+    isPenguinAlive = false;
+  }
+
+}
+
+function getLegalPenguinMove() {
+  var movements = [];
+  //up
+  if (board[penguinShape.i][penguinShape.j - 1] != 4 && isCellEmpty(penguinShape.i, penguinShape.j - 1)) {
+    movements.push(0);
+  }
+  //down
+  if (board[penguinShape.i][penguinShape.j + 1] != 4 && isCellEmpty(penguinShape.i, penguinShape.j + 1)) {
+    movements.push(1);
+  }
+  //left
+  if (board[penguinShape.i - 1][penguinShape.j] != 4 && isCellEmpty(penguinShape.i - 1, penguinShape.j)) {
+    movements.push(2);
+  }
+  //right
+  if (board[penguinShape.i + 1][penguinShape.j] != 4 && isCellEmpty(penguinShape.i + 1, penguinShape.j)) {
+    movements.push(3);
+  }
+
+  return movements;
 }
 
 function gameOver() {
-  alert("Your'e a losser! :( :( :(")
+  alert("Your'e a looser! :( :( :(")
 }
 
 function initWalls() {
