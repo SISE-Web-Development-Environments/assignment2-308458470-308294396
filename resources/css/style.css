@@ -13,15 +13,26 @@ body {
   padding: 0;
 }
 
-.container {
+.container{
   position: relative;
+  text-align: center;
 }
+
+.content{
+	padding-top: 100px;
+}
+
 .banner {
   position: relative;
   width: 100%;
   height: 30vh;
   background: url(/resources/images/webBanner.jpg);
   background-size: cover;
+}
+
+.msWelcome{
+	height: 303px ;
+	width: 245px;
 }
 
 header {
@@ -54,11 +65,247 @@ ul li {
   list-style: none;
   line-height: 30px;
 }
+
+ul li.active1:hover{
+	border-bottom: 3px solid #ff0000;
+}
+
+ul li.active2:hover{
+	border-bottom: 3px solid #ffb8ff;
+}
+
+ul li.active3:hover{
+	border-bottom: 3px solid #00ffff;
+}
+
+ul li.active4:hover{
+	border-bottom: 3px solid #ffb852;
+}
+
 ul li a {
   color: white;
   text-decoration: none;
   font-family: 'retro';
   padding: 0 15px;
+}
+
+.form-style-4 {
+  width: 450px;
+  font-size: 16px;
+  background: black;
+  padding: 30px 30px 15px 30px;
+  border: 5px solid #53687e;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+}
+
+.form-style-4 input[type='password'],
+.form-style-4 input[type='button'],
+.form-style-4 input[type='text'],
+.form-style-4 input[type='email'],
+.form-style-4 textarea,
+.form-style-4 label {
+  font-family: 'retro';
+  font-size: 16px;
+  color: #fff;
+}
+.form-style-4 label {
+  display: block;
+  margin-bottom: 10px;
+}
+.form-style-4 label > span {
+  display: inline-block;
+  float: left;
+  width: 150px;
+}
+
+.form-style-4 input[type='password'],
+.form-style-4 input[type='text'],
+.form-style-4 input[type='email'] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #83a4c5;
+  width: 275px;
+  outline: none;
+  padding: 0px 0px 0px 0px;
+  font-family: 'retro';
+  font-size: 16px;
+  font-style: none;
+}
+
+.form-style-4 input[type='text']:focus,
+.form-style-4 input[type='password']:focus,
+.form-style-4 input[type='email'] :focus {
+  border-bottom: 1px dashed #d9ffa9;
+}
+
+.buttons {
+  background: #576e86;
+  border: none;
+  padding: 8px 10px 8px 10px;
+  border-radius: 5px;
+  color: #a8bace;
+  font-family: 'retro';
+  font-size: 16px;
+  color: #fff;
+}
+.buttons:hover {
+  background: #394d61;
+}
+
+
+
+
+
+/*footer*/
+footer{
+	position: relative;
+	bottom: 0;
+	font-family: "retro";
+}
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px;
+ 
+	padding: 55px 50px;
+	margin-top: 80px;
+}
+ 
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+ 
+.footer-distributed .footer-left{
+	width: 40%;
+}
+ 
+.footer-distributed h3{
+	color:  #ffb8ff;
+	font: normal 48px;
+	margin: 0;
+}
+ 
+.footer-distributed h3 span{
+	color:  #fdff00;
+}
+ 
+ 
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+ 
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+ 
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+ 
+ 
+.footer-distributed .footer-center{
+	width: 35%;
+}
+ 
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+ 
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+ 
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+ 
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+ 
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+ 
+.footer-distributed .footer-right{
+	width: 20%;
+}
+ 
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+ 
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+ 
+
+@media (max-width: 880px) {
+ 
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	
+	}
+ 
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+ 
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+	.main {
+		line-height: normal;
+		font-size: auto;
+	}
+ 
 }
 
 .playerDiv{

@@ -25,176 +25,220 @@
 			<header>
 				<a class="logo">Logo</a>
 				<ul>
-					<li><a onclick="showWelcome()" href="#welcom">Welcome</a></li>
-					<li><a onclick="showSignUp()" href="#signUp">Register</a></li>
-					<li><a onclick="showLogin()" href="#login">Login</a></li>
-					<li><a onclick="showAbout()" href="#about">About</a></li>
+					<li class="active1"><a onclick="showWelcome()" href="#welcome">Welcome</a></li>
+					<li class="active2"><a onclick="showSignUp()" href="#signUp">Register</a></li>
+					<li class="active3"><a onclick="showLogin()" href="#login">Login</a></li>
+					<li class="active4"><a onclick="showAbout()" href="#about">About</a></li>
 				</ul>
 			</header>
 
-			<div id="welcome" class="welcome" style="display:none;">
-				<p>Welcome!</p>
-				<button onclick="showSignUp()">Sign Up</button>
-				<button onclick="showLogin()">Login</button>
-			</div>
+			<div class="content">
+				<div id="welcome" class="welcome" style="display:none;">
+					<h2>Welcome!</h2>
+					<label>
+						<span> </span><input type="button" class="buttons" value="Sign Up" onclick="showSignUp()">
+					</label>
 
-			<div id="signUp" class="signUp" style="display:none;">
-				<p>sign up</p>
-				<form id="signUpForm">
-					<div>
-						<label for="useName"><b>User Name</b></label>
-						<input type="text" placeholder="Enter UserName" name="userName">
-						</b>
+					<label>
+						<span> </span><input type="button" class="buttons" value="Login" onclick="showLogin()">
+					</label>
+					<img id="hello" class="msWelcome" src="resources/images/hello.png" alt="hello">
+				</div>
+	
+				<div id="signUp" class="signUp" style="display:none;">
+					<p>sign up</p>
+					<form id="signUpForm" class="form-style-4">
+						<label for="useName">
+						<span>User Name</span><input type="text" placeholder="Enter UserName" name="userName">
+						</label>
 
-						<label for="psw"><b>Password</b></label>
-						<input type="password" placeholder="Enter Password" name="password">
-						</br>
-						
-						<label for="email"><b>Email</b></label>
-						<input type="text" placeholder="Enter Email" name="email">
-						</br>
+						<label for="psw">
+						<span>Password</span><input type="password" placeholder="Enter Password" name="password">
+						</label>
 
-						<label for="firstName"><b>First Name</b></label>
-						<input type="text" placeholder="Enter First Name" name="firstName">
+						<label for="email">
+						<span>Email</span><input type="text" placeholder="Enter Email" name="email">
+						</label>
 
-						<label for="lastName"><b>Last Name</b></label>
-						<input type="text" placeholder="Enter Last Name" name="lastName">
-						</br>
-						<label for="dateOfBirth"><b>Date of birth</b></label>
+						<label for="firstName">
+						<span>First Name</span><input type="text" placeholder="Enter First Name" name="firstName">
+						</label>
+
+						<label for="lastName">
+						<span>Last Name</span><input type="text" placeholder="Enter Last Name" name="lastName">
+						</label>
+
+						<label for="dateOfBirth">
 						<div class="col-sm-10">
-							<input class="form-control" id="dateOfBirth" name="date" placeholder="MM/DD/YYYY" type="text"/>
+							<span>Date Of Birth</span><input id="dateOfBirth" name="date" placeholder="MM/DD/YYYY" type="text"/>
+							</label>
 						</div>
 						</br>
-						<button type="button" onclick="register(userName.value, password.value, email.value, firstName.value, lastName.value, dateOfBirth.value)">Submit</button>
-					</div>
-				</form>
-			</div>
 
-			<div id="login" class="login" style="display:none;">
-				<p>login</p>
-				<form>
-					<div>
-						<label for="useName"><b>User Name</b></label>
-						<input type="text" placeholder="Enter UserName" name="username">
-						</b>
-
-						<label for="psw"><b>Password</b></label>
-						<input type="password" placeholder="Enter Password" name="passw">
+						<label>
+							<span> </span><input type="button" value="Sign Up" class="buttons" onclick="register(userName.value, password.value, email.value, firstName.value, lastName.value, dateOfBirth.value)" />
+						</label>
+					</form>
+				</div>
+	
+				<div id="login" class="login" style="display:none;">
+					<p>login</p>
+					<form class="form-style-4"> 
+						<div>
+							<label for="userName">
+							<span>User Name</span><input type="text" placeholder="Enter UserName" name="username">
+							</label>	
+						</div>
+						<div>
+							<label for="psw">
+							<span>Password</span><input type="password" placeholder="Enter Password" name="passw">
+							</label>
+						</div>
 						</br>
-					</div>
-					<button type="button" onclick="checkUserInDB(username.value, passw.value)">Submit</button>
-				</form>
-			</div>
-
-			<div id="settings" class="settings" style="display:none;">
-				<p>settings</p>
-				<form id="settingsForm">
-				<label for="KeyUp"><b>Key Up</b></label>
-				<input id="keyUpPressed" type="text" placeholder="Press any key" name="keyUp" onkeydown="keyPressed(event)">
-				<input id="keyUpPresseddd" type="text" value="" name="keyUpPresseddd">
-				</br>
-				<label for="KeyDown"><b>Key Down</b></label>
-				<input id="keyDownPressed" type="text" placeholder="Press any key" name="keyDown" onkeydown="keyPressed(event)">
-				</br>
-				<label for="KeyLeft"><b>Key Left</b></label>
-				<input id="keyLeftPressed" type="text" placeholder="Press any key" name="keyLeft" onkeydown="keyPressed(event)">
-				</br>
-				<label for="KeyRight"><b>Key Right</b></label>
-				<input id="keyRightPressed" type="text" placeholder="Press any key" name="keyRight" onkeydown="keyPressed(event)">
-				</br>
-				<label for="numBalls"><b>Number of Balls (50-90)</b></label>
-				<input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
-
-				<label for="colors"><b>Three different colors for the balls</b></label>
-				<label for="colors"><b>5 points balls</b></label>
-				<select id="color1" name="Color1"> 
-					<option value="">-- Color --</option> 
-					<option value="Blue">Blue</option> 
-					<option value="Green">Green</option> 
-					<option value="Yellow">Yellow</option> 
-					<option value="Red">Red</option> 
-				</select> 
-
-				<label for="colors"><b>15 points balls</b></label>
-				<select id="color2" name="Color2"> 
-					<option value="">-- Color --</option> 
-					<option value="Blue">Blue</option> 
-					<option value="Green">Green</option> 
-					<option value="Yellow">Yellow</option> 
-					<option value="Red">Red</option> 
-				</select> 
-
-				<label for="colors"><b>25 points balls</b></label>
-				<select id="color3" name="Color3"> 
-					<option value="">-- Color --</option> 
-					<option value="Blue">Blue</option> 
-					<option value="Green">Green</option> 
-					<option value="Yellow">Yellow</option> 
-					<option value="Red">Red</option> 
-				</select> 
-
-				<label for="time"><b>Time for game</b></label>
-				<input id="time" type="number" placeholder="Enter number greater than 60 seconds" name="timeOfGame" value="60">
-
-				<label for="monster"><b>Number of monsters</b></label>
-				<select id="monsters" name="numOfMonsters"> 
-					<option value="">-- monster --</option> 
-					<option value="1">1</option> 
-					<option value="2">2</option> 
-					<option value="3">3</option> 
-					<option value="4">4</option> 
-				</select> 
-
-				<button type="button" onclick="randomSettings()">Random Settings</button>
-				<button type="button" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, monsters.value)">Start New Game</button>
-			</form>
-
-			</div>
-			<div id="about" class="about" style="display:none;">
-				<p>about</p>
-			</div>
-
-			<div id="board" class="board" style="display:none;">
-				<div id="playerDiv" class="playerDiv"></div>
-					<div id="score">
-						<label for="lblScore">SCORE:</label>
-						<input id="lblScore" type="text" />
-					</div>
-					<div id="time">
-						<label for="lblTime">TIME:</label>
-						<input id="lblTime" type="text" />
-					</div>
-					<div id="playerName">
-						<label for="lblPlayer">Player:</label>
-						<input id="lblPlayer" type="text" />
-					</div>
-					<div id="playerLife">
-						<label for="lblLife">Life:</label>
-						<canvas id="canvaslife" height="50" width="450"></canvas>
-					</div>
+						<label>
+							<span> </span><input type="button" value="Login" class="buttons" onclick="checkUserInDB(username.value, passw.value)" />
+						</label>
+					</form>
 				</div>
-				<div id="game">
-					<canvas id="canvas" height="450" width="450"></canvas>
-					<img id="blueGhost" src="resources/images/blueGhost.png" alt="inky" style="display: none">
-					<img id="orangeGhost" src="resources/images/orangeGhost.png" alt="clyde" style="display: none">
-					<img id="pinkGhost" src="resources/images/pinkGhost.png" alt="pinky" style="display: none">
-					<img id="redGhost" src="resources/images/redGhost.png" alt="blinky" style="display: none">
-					<img id="pacUp" src="resources/images/mspac_up.gif" alt="pacmanUp" style="display: none">
-					<img id="pacDown" src="resources/images/mspac_down.gif" alt="pacmanDown" style="display: none">
-					<img id="pacLeft" src="resources/images/mspac_left.gif" alt="pacmanLeft" style="display: none">
-					<img id="pacRight" src="resources/images/mspac_right.gif" alt="pacmanRight" style="display: none">
-					<img id="penguin" src="resources/images/penguin.png" alt="penguin" style="display: none">
-					<img id="apple" src="resources/images/fruit_apple.gif" alt="apple" style="display: none">
-					<img id="cherry" src="resources/images/fruit_cherry.gif" alt="cherry" style="display: none">
-					<img id="strawberry" src="resources/images/fruit_strawberry.gif" alt="strawberry" style="display: none">
-					<img id="pizza" src="resources/images/pizza.png" alt="pizza" style="display: none">
-					<img id="lifePacmen" src="resources/images/life.gif" alt="life" style="display: none">
+	
+				<div id="settings" class="settings" style="display:none;">
+					<p>settings</p>
+					<form id="settingsForm">
+						<label for="KeyUp"><b>Key Up</b></label>
+						<input id="keyUpPressed" type="text" placeholder="Press any key" name="keyUp" onkeydown="keyPressed(event)">
+						<input id="keyUpPresseddd" type="text" value="" name="keyUpPresseddd">
+						</br>
+						<label for="KeyDown"><b>Key Down</b></label>
+						<input id="keyDownPressed" type="text" placeholder="Press any key" name="keyDown" onkeydown="keyPressed(event)">
+						</br>
+						<label for="KeyLeft"><b>Key Left</b></label>
+						<input id="keyLeftPressed" type="text" placeholder="Press any key" name="keyLeft" onkeydown="keyPressed(event)">
+						</br>
+						<label for="KeyRight"><b>Key Right</b></label>
+						<input id="keyRightPressed" type="text" placeholder="Press any key" name="keyRight" onkeydown="keyPressed(event)">
+						</br>
+						<label for="numBalls"><b>Number of Balls (50-90)</b></label>
+						<input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
+		
+						<label for="colors"><b>Three different colors for the balls</b></label>
+						<label for="colors"><b>5 points balls</b></label>
+						<select id="color1" name="Color1"> 
+							<option value="">-- Color --</option> 
+							<option value="Blue">Blue</option> 
+							<option value="Green">Green</option> 
+							<option value="Yellow">Yellow</option> 
+							<option value="Red">Red</option> 
+						</select> 
+		
+						<label for="colors"><b>15 points balls</b></label>
+						<select id="color2" name="Color2"> 
+							<option value="">-- Color --</option> 
+							<option value="Blue">Blue</option> 
+							<option value="Green">Green</option> 
+							<option value="Yellow">Yellow</option> 
+							<option value="Red">Red</option> 
+						</select> 
+		
+						<label for="colors"><b>25 points balls</b></label>
+						<select id="color3" name="Color3"> 
+							<option value="">-- Color --</option> 
+							<option value="Blue">Blue</option> 
+							<option value="Green">Green</option> 
+							<option value="Yellow">Yellow</option> 
+							<option value="Red">Red</option> 
+						</select> 
+		
+						<label for="time"><b>Time for game</b></label>
+						<input id="time" type="number" placeholder="Enter number greater than 60 seconds" name="timeOfGame" value="60">
+		
+						<label for="monster"><b>Number of monsters</b></label>
+						<select id="monsters" name="numOfMonsters"> 
+							<option value="">-- monster --</option> 
+							<option value="1">1</option> 
+							<option value="2">2</option> 
+							<option value="3">3</option> 
+							<option value="4">4</option> 
+						</select> 
+		
+						<button type="button" onclick="randomSettings()">Random Settings</button>
+						<button type="button" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, monsters.value)">Start New Game</button>
+					</form>
 				</div>
-				
+
+				<div id="about" class="about" style="display:none;">
+					<p>about</p>
+				</div>
+	
+				<div id="board" class="board" style="display:none;">
+					<div id="playerDiv" class="playerDiv"></div>
+						<div id="score">
+							<label for="lblScore">SCORE:</label>
+							<input id="lblScore" type="text" />
+						</div>
+						<div id="time">
+							<label for="lblTime">TIME:</label>
+							<input id="lblTime" type="text" />
+						</div>
+						<div id="playerName">
+							<label for="lblPlayer">Player:</label>
+							<input id="lblPlayer" type="text" />
+						</div>
+						<div id="playerLife">
+							<label for="lblLife">Life:</label>
+							<canvas id="canvaslife" height="50" width="450"></canvas>
+						</div>
+					</div>
+					<div id="game">
+						<canvas id="canvas" height="450" width="450"></canvas>
+						<img id="blueGhost" src="resources/images/blueGhost.png" alt="inky" style="display: none">
+						<img id="orangeGhost" src="resources/images/orangeGhost.png" alt="clyde" style="display: none">
+						<img id="pinkGhost" src="resources/images/pinkGhost.png" alt="pinky" style="display: none">
+						<img id="redGhost" src="resources/images/redGhost.png" alt="blinky" style="display: none">
+						<img id="pacUp" src="resources/images/mspac_up.gif" alt="pacmanUp" style="display: none">
+						<img id="pacDown" src="resources/images/mspac_down.gif" alt="pacmanDown" style="display: none">
+						<img id="pacLeft" src="resources/images/mspac_left.gif" alt="pacmanLeft" style="display: none">
+						<img id="pacRight" src="resources/images/mspac_right.gif" alt="pacmanRight" style="display: none">
+						<img id="penguin" src="resources/images/penguin.png" alt="penguin" style="display: none">
+						<img id="apple" src="resources/images/fruit_apple.gif" alt="apple" style="display: none">
+						<img id="cherry" src="resources/images/fruit_cherry.gif" alt="cherry" style="display: none">
+						<img id="strawberry" src="resources/images/fruit_strawberry.gif" alt="strawberry" style="display: none">
+						<img id="pizza" src="resources/images/pizza.png" alt="pizza" style="display: none">
+						<img id="lifePacmen" src="resources/images/life.gif" alt="life" style="display: none">
+					</div>	
+				</div>
 			</div>
 		</div>
 
-		<footer></footer>
+		<footer class="footer-distributed">
+			<div class="footer-left">
+				<h3>Ms.<span>Pacman</span></h3>
+				<p class="footer-links">
+					<a onclick="showWelcome()" href="#welcom">Welcome</a>
+					·
+					<a onclick="showSignUp()" href="#signUp">Register</a>
+					·
+					<a onclick="showLogin()" href="#login">Login</a>
+					·
+					<a onclick="showAbout()" href="#about">About</a>
+				</p>	 
+				<p class="footer-company-name">Yaar&Amit &copy; 2020</p>
+			</div>
+			
+			<div class="footer-center">
+				<div>
+				<i class="fa fa-envelope"></i>
+				<p><a href="mailto:support@company.com">contact@webdevtrick.com</a></p>
+				<p><a href="mailto:support@company.com">contact@webdevtrick.com</a></p>
+				</div>
+			</div>
+	 
+			<div class="footer-right">
+				<p class="footer-company-about">
+				<span>About the Project</span>
+				This project was created during the course "Web Development Environments" at Ben-Gurion University by Yaar May-Paz&Amit Nachimovitz.
+				</p>
+			</div>
+		</footer>
 
 		<script>
 			$(document).ready(function(){
@@ -208,6 +252,5 @@
 				})
 			})
 		</script>
-		</div>
-		</body>
+	</body>
 </html>
