@@ -10,6 +10,7 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+var ghostInterval;
 var keyUp;
 var keyDown;
 var keyLeft;
@@ -31,6 +32,9 @@ var candyId = [];
 var mycandy;
 var candyLocation = new Object();
 var isPenguinAlive;
+var isPizzaExists;
+var pizzaLocation = new Object();
+var isPizzaEaten;
 
 function Start(
   up,
@@ -122,9 +126,10 @@ function Start(
     false
   );
   interval = setInterval(UpdatePosition, 100);
-  setInterval(ghostsUpdatePosition, 500);
+  ghostInterval = setInterval(ghostsUpdatePosition, 500);
   setInterval(penguinUpdatePosition, 500);
   setInterval(showCandy, 8000);
+  setInterval(showPizza, 10000);
   //setInterval(showPizzaSlowMotion, 1000);
 }
 
@@ -173,6 +178,7 @@ function setup(
   candyId = ['apple', 'cherry', 'strawberry'];
   mycandy = null;
   isPenguinAlive = true;
+  isPizzaExists = false;
 }
 
 function isCellEmpty(x, y) {
@@ -204,7 +210,25 @@ function showCandy() {
   //there id a candy on board - need to disappear candy
   else {
     board[candyLocation.i][candyLocation.j] = 0;
-    mycandy == null;
+    mycandy = null;
+  }
+}
+
+function showPizza() {
+  //there is no pizza on board - need to show pizza
+  if (isPizzaExists == false) {
+    var location = findRandomEmptyCell(board);
+    pizzaLocation.i = location[0];
+    pizzaLocation.j = location[1];
+    board[pizzaLocation.i][pizzaLocation.j] = 7;
+    isPizzaExists = true;
+    ghostInterval = setInterval(ghostsUpdatePosition, 500);
+  }
+
+  //there is a pizza on board - need to disappear pizza
+  else {
+    board[pizzaLocation.i][pizzaLocation.j] = 0;
+    isPizzaExists = false;
   }
 }
 
@@ -383,6 +407,13 @@ function updateScore(ballType) {
     case 25:
       score+=25;
       break;
+    case 30:
+      score+=25;
+      break;
+    case 7:
+      board[pizzaLocation.i][pizzaLocation.j] = 0;
+      life++;
+      break;
   }
 }
 
@@ -477,6 +508,8 @@ function getBestMove(k) {
     board[ghostLocations[k].i][ghostLocations[k].j] = 0;
     life--;
     score=-10;
+
+    //the player has no life
     if (life == 0) {
       gameOver();
     }
@@ -486,6 +519,7 @@ function getBestMove(k) {
       shape.i = location[0];
       shape.j = location[1];
       board[shape.i][shape.j] = 2;
+      setGhostsOnBoard();
     }
   }
 

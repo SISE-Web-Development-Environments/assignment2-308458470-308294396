@@ -30,6 +30,9 @@ function Draw() {
       } else if (board[i][j] == 30) {
         drawCandy(center.x, center.y);
       }
+      else if (board[i][j] == 7) {
+        drawPizza(center.x, center.y);
+      }
     }
   }
   if (isPenguinAlive) {
@@ -59,6 +62,11 @@ function drawBalls(centerX, centerY, color) {
 
 function drawCandy(centerX, centerY) {
   var img = document.getElementById(mycandy);
+  context.drawImage(img, centerX - 15, centerY - 15);
+}
+
+function drawPizza(centerX, centerY) {
+  var img = document.getElementById("pizza");
   context.drawImage(img, centerX - 15, centerY - 15);
 }
 
