@@ -110,11 +110,7 @@ ul li a {
   width: 150px;
 }
 
-.form-settings {
-  width: 600px;
-}
-
-.form-style-4, .form-settings {
+.form-style-4 {
   width: 450px;
   font-size: 16px;
   background: black;
