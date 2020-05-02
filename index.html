@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="resources/js/jquery-3.4.1.slim.min.js"></script>
+		<script src="resources/js/jquery-3.5.0.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script src="resources/js/bootstrap.js"></script>
 		<script src="resources/js/bootstrap_datepicker.js"></script>
@@ -9,7 +9,14 @@
 		<script src = "resources/js/validate.js"></script>
 		<script src = "resources/js/game.js"></script>
 		<script src = "resources/js/drawGame.js"></script>
+		<script src = "resources/js/aboutModal.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+
 		<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+		<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+		
+
 		
 		<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
 		<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
@@ -23,12 +30,12 @@
 		<div class="container">
 			<div class="banner"></div>
 			<header>
-				<a class="logo">Logo</a>
+				<a class="logo">Ms.<span>Pacman</span></a>
 				<ul>
 					<li class="active1"><a onclick="showWelcome()" href="#welcome">Welcome</a></li>
 					<li class="active2"><a onclick="showSignUp()" href="#signUp">Register</a></li>
 					<li class="active3"><a onclick="showLogin()" href="#login">Login</a></li>
-					<li class="active4"><a onclick="showAbout()" href="#about">About</a></li>
+					<li id="aboutButton" class="active4"><a onclick="openAbout()">About</a></li>
 				</ul>
 			</header>
 
@@ -107,22 +114,27 @@
 						<div>
 							<label for="KeyUp">
 							<span>Key Up</span><input id="keyUpPressed" type="text" placeholder="Press any key" name="keyUp" onkeydown="keyPressed(event)">
+							</label>
 						</div>
 						<div>
 							<label for="KeyDown">
 							<span>Key Down</span><input id="keyDownPressed" type="text" placeholder="Press any key" name="keyDown" onkeydown="keyPressed(event)">
+							</label>
 						</div>
 						<div>
 							<label for="KeyLeft">
 							<span>Key Left</span><input id="keyLeftPressed" type="text" placeholder="Press any key" name="keyLeft" onkeydown="keyPressed(event)">
+							</label>
 						</div>
 						<div>
 							<label for="KeyRight">
 							<span>Key Right</span><input id="keyRightPressed" type="text" placeholder="Press any key" name="keyRight" onkeydown="keyPressed(event)">
+							</label>
 						</div>
 						<div>
 							<label for="numBalls">
 							<span>Number of Balls (50-90)</span><input id="numBalls" type="number" placeholder="Enter number" name="numOfBalls" value="50">
+							</label>
 						</div>
 						</br>
 						</br>
@@ -190,8 +202,10 @@
 					</form>
 				</div>
 
-				<div id="about" class="about" style="display:none;">
-					<p>about</p>
+				<div id="about" class="aboutM">
+					<div id="aboutModal" title="About" class="modal">
+					Created by Yaar May-Paz &amp;Amit Nachimovitz
+					</div>	
 				</div>
 	
 				<div id="board" class="board" style="display:none;">
@@ -229,6 +243,12 @@
 						<img id="strawberry" src="resources/images/fruit_strawberry.gif" alt="strawberry" style="display: none">
 						<img id="pizza" src="resources/images/pizza.png" alt="pizza" style="display: none">
 						<img id="lifePacmen" src="resources/images/life.gif" alt="life" style="display: none">
+
+						<audio id="song" class="song" src="resources/sounds/song.mp3" ></audio>
+						<audio class="ball" src="resources/sounds/ball.wav" ></audio>
+						<audio class="life" src="resources/sounds/life.wav" ></audio>
+						<audio class="fruit" src="resources/sounds/fruit.wav" ></audio>
+						<audio class="speical" src="resources/sounds/speical.wav" ></audio>
 					</div>	
 				</div>
 			</div>
@@ -244,7 +264,7 @@
 					·
 					<a onclick="showLogin()" href="#login">Login</a>
 					·
-					<a onclick="showAbout()" href="#about">About</a>
+					<a onclick="openAbout()" href="#about">About</a>
 				</p>	 
 				<p class="footer-company-name">Yaar&Amit &copy; 2020</p>
 			</div>
@@ -265,6 +285,7 @@
 			</div>
 		</footer>
 
+
 		<script>
 			$(document).ready(function(){
 				var date_input=$('input[name="date"]'); //our date input has the name "date"
@@ -274,8 +295,27 @@
 					container: container,
 					todayHighlight: true,
 					autoclose: true,
-				})
+				});
+
+				$('#aboutModal').dialog({
+				autoOpen: false,
+				hight: 200,
+				width: 300,
+				modal: true,
+  				});	
 			})
+		</script>
+
+		<script>
+			function openAbout(){	
+       		 	$("#aboutModal").dialog("open");
+  		 	 } 
+		</script>
+
+		<script>
+			$("body").on("click",".ui-widget-overlay",function() {
+				$('#aboutModal').dialog("close");
+			});  
 		</script>
 	</body>
 </html>

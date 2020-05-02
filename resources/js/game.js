@@ -63,6 +63,9 @@ function Start(
     playerUserName
   );
 
+  document.getElementById("song").loop;
+  document.getElementById("song").play();
+
   var keys = {};
   window.addEventListener("keydown",
       function(e){
@@ -383,6 +386,9 @@ function UpdatePosition() {
     pac_color = 'green';
   }
   if (score >= 500 /* 50 */) {
+    document.getElementById("song").pause();
+    document.getElementById("song").currentTime = 0;
+
     window.clearInterval(interval);
     window.alert('Game completed');
   } else {
@@ -393,6 +399,7 @@ function UpdatePosition() {
 function updateScore(ballType) {
   //catch the penguin
   if (shape.i == penguinShape.i && shape.j == penguinShape.j) {
+    $('.speical').get(0).play();
     score+=50;
     isPenguinAlive = false;
   }
@@ -400,18 +407,23 @@ function updateScore(ballType) {
   switch(ballType) {
     case 5:
       score+=5;
+      $('.ball').get(0).play();
       break;
     case 15:
         score+=15;
+        $('.ball').get(0).play();
         break;
     case 25:
       score+=25;
+      $('.ball').get(0).play();
       break;
     case 30:
-      score+=25;
+      $('.fruit').get(0).play();
+      score+=30;
       break;
     case 7:
       board[pizzaLocation.i][pizzaLocation.j] = 0;
+      $('.life').get(0).play();
       life++;
       break;
   }
@@ -574,6 +586,8 @@ function getLegalPenguinMove() {
 }
 
 function gameOver() {
+  document.getElementById("song").pause();
+  document.getElementById("song").currentTime = 0;
   alert("Your'e a looser! :( :( :(")
 }
 

@@ -109,24 +109,26 @@ function validSettings() {
                 min: 50,
                 max: 90
             },
-            color1: {
+            Color1: {
                 required: true,
                 color1NotChosen: true,
                 diffColors: true
             },
-            color2: {
+            Color2: {
                 required: true,
-                color2NotChosen: true
+                color2NotChosen: true,
+                diffColors: true
             },
-            color3: {
+            Color3: {
                 required: true,
-                color3NotChosen: true
+                color3NotChosen: true,
+                diffColors: true
             },
             time: {
                 required: true,
                 min: 60
             },
-            monsters: {
+            numOfMonsters: {
                 required: true,
                 monsterNotChosen: true
             }
@@ -150,21 +152,21 @@ function validSettings() {
                 min: "The minumun number of balls is 60",
                 max: "The minumun number of balls is 90"
             },
-            color1: {
+            Color1: {
                 required: "Please choose the first color",
                 diffColors: "Please choose differnt colors"
             },
-            color2: {
+            Color2: {
                 required:  "Please choose the second color"
             },
-            color3: {
+            Color3: {
                 required:  "Please choose the third color",
             },
             time: {
                 required:  "Please define the time",
                 min:  "The minumun time is 60 seconds"
             },
-            ghosts: {
+            numOfMonsters: {
                 required:  "Please choose the number of ghosts"
             }
         }
@@ -182,9 +184,9 @@ $.validator.addMethod("diffKeys", function(value, element) {
 }, "Please choose different keys");
 
 $.validator.addMethod("diffColors", function(value, element) {
-    var color1 = $("#Color1").value;
-    var color2 = $("#Color2").value;
-    var color3 = $("#Color3").value;
+    var color1 = document.getElementById('color1').value;
+    var color2 = document.getElementById('color2').value;
+    var color3 = document.getElementById('color3').value;
 
     return color1 != color2 && color1 != color3 && color2 != color3;
 }, "Please choose different colors");

@@ -48,13 +48,17 @@ header {
   align-items: center;
 }
 .logo {
-  color: white;
+  color:  #ffb8ff;
   text-decoration: none;
   font-family: 'retro';
-  font-weight: 800;
+  font-weight: 40000;
   font-size: 30px;
-  text-transform: uppercase;
+  margin: 0;
+} 
+.logo span{
+	color:  #fdff00;
 }
+ 
 ul {
   display: flex;
   margin: 0;
@@ -108,6 +112,12 @@ ul li a {
 .gameInputs {
   background-color: black;
   width: 150px;
+}
+
+.game{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .form-style-4 {
@@ -196,6 +206,16 @@ ul li a {
 }
 .buttons:hover {
   background: #394d61;
+}
+
+.footer-distributed h3{
+	color:  #ffb8ff;
+	font: normal 48px;
+	margin: 0;
+}
+ 
+.footer-distributed h3 span{
+	color:  #fdff00;
 }
 
 
@@ -348,5 +368,53 @@ footer{
 		line-height: normal;
 		font-size: auto;
 	}
- 
+}
+
+/*dialog*/
+.ui-widget {
+  font-family: Verdana,Arial,sans-serif;
+  font-size: .8em;
+}
+
+.ui-widget-content {
+  background: CC99FF;
+/*Change the dialog border color here*/
+  border: 1px solid #CC99FF;
+  color: #222222;
+}
+
+.ui-dialog {
+  left: 0;
+  outline: 0 none;
+  padding: 0 !important;
+  position: absolute;
+  top: 0;
+}
+
+#success {
+  padding: 0;
+  margin: 0; 
+}
+
+.ui-dialog .ui-dialog-content {
+  background: none repeat scroll 0 0 transparent;
+  border: 0 none;
+  overflow: auto;
+  position: relative;
+  padding: 0 !important;
+}
+
+.ui-widget-header {
+/*Change the Header color here*/
+  background: red;
+  border: 0;
+  color: #fff;
+  font-weight: normal;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  background-color: red;
+  padding: 0.1em .5em;
+  position: relative;
+      font-size: 1em;
 }
