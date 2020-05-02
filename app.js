@@ -80,7 +80,7 @@ function randomSettings() {
 	document.getElementById("keyRightPressed").value = "ArrowRight";
 	document.getElementById("numBalls").value = Math.floor(Math.random() * 40) + 50;
 	document.getElementById("time").value = Math.floor(Math.random() * 30) + 60;
-	document.getElementById("ghosts").value = (Math.floor(Math.random() * 3) + 1).toString();
+	document.getElementById("monsters").value = (Math.floor(Math.random() * 3) + 1).toString();
 	document.getElementById("color1").value = "Blue";
 	document.getElementById("color2").value = "Red";
 	document.getElementById("color3").value = "Green";

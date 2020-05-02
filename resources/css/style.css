@@ -95,7 +95,26 @@ ul li a {
   color: #fff;
 }
 
-.form-style-4 {
+.lables, .gameInputs {
+  font-family: 'retro';
+  font-size: 16px;
+  color: #fff;
+  float:left;
+  padding-left: 20px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+.gameInputs {
+  background-color: black;
+  width: 150px;
+}
+
+.form-settings {
+  width: 600px;
+}
+
+.form-style-4, .form-settings {
   width: 450px;
   font-size: 16px;
   background: black;
@@ -334,12 +353,4 @@ footer{
 		font-size: auto;
 	}
  
-}
-
-.playerDiv{
-  display: flex;
-  flex-direction: row;
-  font-family: 'retro';
-  color: white;
-  background-color: black;
 }

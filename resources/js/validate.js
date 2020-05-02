@@ -126,9 +126,9 @@ function validSettings() {
                 required: true,
                 min: 60
             },
-            ghosts: {
+            monsters: {
                 required: true,
-                ghostNotChosen: true
+                monsterNotChosen: true
             }
         
         },
@@ -155,10 +155,10 @@ function validSettings() {
                 diffColors: "Please choose differnt colors"
             },
             color2: {
-                required:  "Please choose the first color"
+                required:  "Please choose the second color"
             },
             color3: {
-                required:  "Please choose the first color",
+                required:  "Please choose the third color",
             },
             time: {
                 required:  "Please define the time",
@@ -204,7 +204,7 @@ $.validator.addMethod("color3NotChosen", function(value, element) {
     return color != "";
 }, "Please choose the third color");
 
-$.validator.addMethod("ghosts", function(value, element) {
-    var ghost = $("#numOfGhosts").value;
-    return ghost != "";
+$.validator.addMethod("monsterNotChosen", function(value, element) {
+    var monster = $("#monster").value;
+    return monster != "";
 }, "Please choose the number of ghosts");

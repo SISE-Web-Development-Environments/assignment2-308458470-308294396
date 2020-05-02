@@ -132,7 +132,7 @@
 						</br>
 						<div>
 							<label for="colors"><span>5 points balls</span>
-							<select id="color1" type="option" name="Color1"> 
+							<select id="color1" name="Color1" type="option"> 
 								<option type="option" value="">-- Color --</option> 
 								<option type="option" value="Blue">Blue</option> 
 								<option type="option" value="Green">Green</option> 
@@ -143,7 +143,7 @@
 						</br>
 						<div>
 							<label for="colors"><span>15 points balls</span>
-							<select id="color2" type="option" name="Color2"> 
+							<select id="color2" name="Color2" type="option"> 
 								<option type="option" value="">-- Color --</option> 
 								<option type="option" value="Blue">Blue</option> 
 								<option type="option" value="Green">Green</option> 
@@ -154,7 +154,7 @@
 						</br>
 						<div>
 							<label for="colors"><span>25 points balls</span>
-							<select id="color3" type="option" name="Color3"> 
+							<select id="color3" name="Color3"type="option" > 
 								<option type="option" value="">-- Color --</option> 
 								<option type="option" value="Blue">Blue</option> 
 								<option type="option" value="Green">Green</option> 
@@ -171,19 +171,21 @@
 						</div>
 						</br>
 						<div>
-							<label for="ghost"><span>Number of ghosts</span>
-							<select id="ghosts" type="option" name="numOfGhosts"> 
-								<option type="option" value="">-- Ghosts --</option> 
-								<option type="option" value="1">1</option> 
-								<option type="option" value="2">2</option> 
-								<option type="option" value="3">3</option> 
-								<option type="option" value="4">4</option> 
-							</select> 
+							<label for="monster"><span>Number of ghosts</span></label>
+							<select id="monsters" name="numOfMonsters" type="option"> 
+							<option type="option" value="">-- Ghosts --</option> 
+							<option type="option" value="1">1</option> 
+							<option type="option" value="2">2</option> 
+							<option type="option" value="3">3</option> 
+							<option type="option" value="4">4</option> 
+						</select>  
 						</div>
+						</br>
+						</br>
 						</br>
 						<div>
 							<input type="button" value="Random Settings" class="buttons" onclick="randomSettings()"/>
-							<input type="button" value="Start New Game" class="buttons" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, ghosts.value)"/>
+							<input type="button" value="Start New Game" class="buttons" onclick="startNewGame(numBalls.value, color1.value, color2.value, color3.value, time.value, numOfMonsters.value)"/>
 						</div>
 					</form>
 				</div>
@@ -195,20 +197,20 @@
 				<div id="board" class="board" style="display:none;">
 					<div id="playerDiv" class="playerDiv"></div>
 						<div id="score">
-							<label for="lblScore">SCORE:</label>
-							<input id="lblScore" type="text" />
+							<label for="lblScore" class="lables">SCORE:</label>
+							<input id="lblScore" type="text" class="gameInputs"/>
 						</div>
 						<div id="time">
-							<label for="lblTime">TIME:</label>
-							<input id="lblTime" type="text" />
+							<label for="lblTime" class="lables">TIME:</label>
+							<input id="lblTime" type="text" class="gameInputs"/>
 						</div>
 						<div id="playerName">
-							<label for="lblPlayer">Player:</label>
-							<input id="lblPlayer" type="text" />
+							<label for="lblPlayer" class="lables">PLAYER:</label>
+							<input id="lblPlayer" type="text" class="gameInputs"/>
 						</div>
 						<div id="playerLife">
-							<label for="lblLife">Life:</label>
-							<canvas id="canvaslife" height="50" width="450"></canvas>
+							<label for="lblLife" class="lables">LIFE:</label>
+							<canvas id="canvaslife" height="30" width="300"></canvas>
 						</div>
 					</div>
 					<div id="game">
