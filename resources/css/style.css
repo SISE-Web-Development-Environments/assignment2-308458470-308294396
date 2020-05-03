@@ -369,93 +369,6 @@ footer{
 	}
 }
 
-/*dialog*/
-.ui-widget {
-  font-family: Verdana,Arial,sans-serif;
-  font-size: .8em;
-}
-
-.ui-widget-content {
-  background: CC99FF;
-/*Change the dialog border color here*/
-  border: 1px solid #CC99FF;
-  color: #222222;
-}
-
-.ui-dialog {
-  left: 0;
-  outline: 0 none;
-  padding: 0 !important;
-  position: absolute;
-  top: 0;
-}
-
-#success {
-  padding: 0;
-  margin: 0; 
-}
-
-.ui-dialog .ui-dialog-content {
-  background: none repeat scroll 0 0 transparent;
-  border: 0 none;
-  overflow: auto;
-  position: relative;
-  padding: 0 !important;
-}
-
-.ui-widget-header {
-/*Change the Header color here*/
-  background: red;
-  border: 0;
-  color: #fff;
-  font-weight: normal;
-}
-
-.ui-dialog .ui-dialog-titlebar {
-  background-color: red;
-  padding: 0.1em .5em;
-  position: relative;
-  font-size: 1em;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .game{
   float: left;
   padding-left: 300px;
@@ -483,4 +396,28 @@ footer{
 
 .gameSettings label > span {
   display: inline-block;
+}
+
+.modal-content {
+  background-color: black;
+  width: 500px;
+  height: 150px;
+}
+
+.modal-content input[type='text'] {
+  width: 400px;
+  font-size: 16px;
+  background-color: black;
+  font-family: 'retro';
+  color: #fff;
+  border: none;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+#aboutModal {
+  background-color: black;
+  font-family: 'retro';
+  font-weight: 20;
+  color: #fff;
 }

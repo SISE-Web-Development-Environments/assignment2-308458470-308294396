@@ -206,7 +206,7 @@ function isCellEmpty(x, y) {
 }
 
 function showCandy() {
-  //there is no candy on board - need show candy
+  //there is no candy on board - need to show candy
   if (mycandy == null) {
     mycandy = getRandomCandy();
     var location = findRandomEmptyCell(board);
@@ -215,7 +215,7 @@ function showCandy() {
     board[candyLocation.i][candyLocation.j] = 30;
   }
 
-  //there id a candy on board - need to disappear candy
+  //there is a candy on board - need to disappear candy
   else {
     board[candyLocation.i][candyLocation.j] = 0;
     mycandy = null;
@@ -230,7 +230,6 @@ function showPizza() {
     pizzaLocation.j = location[1];
     board[pizzaLocation.i][pizzaLocation.j] = 7;
     isPizzaExists = true;
-    ghostInterval = setInterval(ghostsUpdatePosition, 500);
   }
 
   //there is a pizza on board - need to disappear pizza

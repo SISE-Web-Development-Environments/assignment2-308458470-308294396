@@ -16,9 +16,7 @@ function createUserDB() {
 	sessionStorage.setItem("names", JSON.stringify(names));
 	var storedNames = JSON.parse(sessionStorage.getItem("names"));
 	storedNames[userCounter++]= ({userName:"p", pass: "p"});
-	storedNames[userCounter++]= ({userName:"yaarm", pass: "a123456"});
 	sessionStorage.setItem("names", JSON.stringify(storedNames));
-	//register("p","p");
 }
 
 
@@ -36,16 +34,9 @@ function register(userName, pass, email, firstName, lastName, dateOfBirth) {
 			dateOfBirth: dateOfBirth
 			});
 		sessionStorage.setItem("names", JSON.stringify(storedNames));
-		alert("The user added");
 		showWelcome();
 	}
-	else {
-		alert("Not valid!!");
-	}
-	//showWelcome();
 }
-
-//add function of validate to login page
 
 function checkUserInDB(username, passw) {
 	var isUserFound = false;
@@ -126,6 +117,7 @@ function showWelcome() {
 	$("#about").hide();
 	$('#game').hide();
 	$('#gameSettings').hide();
+	$('#endGame').hide();
 }
 
 function showSignUp(){
@@ -136,6 +128,7 @@ function showSignUp(){
 	$("#board").hide();
 	$('#game').hide();
 	$('#gameSettings').hide();
+	$('#endGame').hide();
 }
 
 function showLogin(){
@@ -146,6 +139,7 @@ function showLogin(){
 	$("#board").hide();
 	$('#game').hide();
 	$('#gameSettings').hide();
+	$('#endGame').hide();
 }
 
 function showSettings(){
@@ -156,6 +150,7 @@ function showSettings(){
 	$("#board").hide();
 	$('#game').hide();
 	$('#gameSettings').hide();
+	$('#endGame').hide();
 }
 
 function showGame() {
@@ -166,6 +161,7 @@ function showGame() {
 	$("#signUp").hide();
 	$("#login").hide();
 	$("#settings").hide();
+	$('#endGame').hide();
 }
 
 

@@ -204,7 +204,13 @@
 
 				<div id="about" class="aboutM">
 					<div id="aboutModal" title="About" class="modal">
-					Created by Yaar May-Paz &amp;Amit Nachimovitz
+					<p>Created by Yaar May-Paz &amp;Amit Nachimovitz </br>
+					We used jQuery plugin in order to find elements in the DOM and also for the document.ready.</br>
+					We used two templates - for the registration form and for the footer. </br>
+					We encounered two main difficulties in this project: </br>
+					* Place the different elements on the window.</br>
+					* Pay attention to the lifetime of parameters.</p>  
+					</ul> 
 					</div>	
 				</div>
 	
@@ -298,10 +304,9 @@
 						<div class="modal-content">
 							<span class="close">&times;</span>
 							<label for="lblMessage"></label>
-							<input id="lblMessage" type="text" disabled>
+							<input id="lblMessage" type="text" disabled></br>
 							<input type="button" value="Start New Game" class="buttons" onclick="restartGame()"/>
 						</div>
-					
 					</div>
 				</div>
 			</div>
@@ -352,8 +357,8 @@
 
 				$('#aboutModal').dialog({
 				autoOpen: false,
-				hight: 200,
-				width: 300,
+				hight: 400,
+				width: 650,
 				modal: true,
   				});	
 			})
