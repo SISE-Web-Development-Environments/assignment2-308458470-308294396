@@ -74,19 +74,6 @@ $.validator.addMethod("legalEmail", function(value, element) {
     return this.optional( element ) || /\S+@\S+\.\S+/.test( value );
 }, "Your email is not valid.");
 
-/*
-$.validator.addMethod("legalDate", function() {
-    var dateString = $("#birthdate").value;
-    var birthDate = new Date(dateString);
-    var today = new Date();
-    if ( birthDate > today ) { 
-        $('#birthdate').after('<p>You cannot enter a date in the future!.</p>');
-        return false;
-    }
-    return true;
-});
-*/
-
 function validSettings() {
 
     $("#settingsForm").validate({

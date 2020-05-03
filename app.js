@@ -21,10 +21,8 @@ function createUserDB() {
 
 
 function register(userName, pass, email, firstName, lastName, dateOfBirth) {
-	alert("Im in register");
 	if (validRegisteration()) {
 		var storedNames = JSON.parse(sessionStorage.getItem("names"));
-		console.log(storedNames);
 		storedNames[userCounter++]= ({
 			userName: userName,
 			pass: pass,

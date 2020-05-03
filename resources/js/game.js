@@ -66,9 +66,8 @@ function Start(
     totalTime,
     playerUserName
   );
-  //canvas.style.display='block';
   document.getElementById("song").loop;
-  //document.getElementById("song").play();
+  document.getElementById("song").play();
   drawSettings();
 
   var keys = {};
