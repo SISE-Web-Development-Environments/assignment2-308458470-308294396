@@ -9,7 +9,7 @@ function Draw() {
 
   lblPlayer.value = playerName;
   lblScore.value = score;
-  lblTime.value = time_elapsed;
+  lblTime.value = time - time_elapsed;
   drawLife();
 
   for (var i = 0; i < 15; i++) {
@@ -102,4 +102,17 @@ function drawLife() {
 	  lifecontext.drawImage(img, x ,0);
 	  x+=30;
 	}
+}
+
+function drawSettings(){
+  lblKeyUp.value = keyUp;
+  lblKeyDown.value = keyDown;
+  lblKeyLeft.value = keyLeft;
+  lblKeyRight.value = keyRight;
+  lblNumBalls.value = numBalls;
+  lbl5Color.value = color5P;
+  lbl15Color.value = color15P;
+  lbl25Color.value = color25P;
+  lblTimeChosen.value = time;
+  lblNumGhosts.value = numMonsters;
 }

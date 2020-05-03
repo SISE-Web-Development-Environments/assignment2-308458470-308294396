@@ -19,8 +19,9 @@ body {
 }
 
 .content{
-	padding-top: 100px;
+	padding-top: 50px;
 }
+
 
 .banner {
   position: relative;
@@ -28,6 +29,10 @@ body {
   height: 30vh;
   background: url(/resources/images/webBanner.jpg);
   background-size: cover;
+}
+
+.section{
+  padding-top: 100px;
 }
 
 .msWelcome{
@@ -114,17 +119,11 @@ ul li a {
   width: 150px;
 }
 
-.game{
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
 .form-style-4 {
   width: 450px;
   font-size: 16px;
   background: black;
-  padding: 30px 30px 15px 30px;
+  padding: 15px 30px 15px 30px;
   border: 5px solid #53687e;
   margin-left: auto;
   margin-right: auto;
@@ -224,6 +223,7 @@ ul li a {
 
 /*footer*/
 footer{
+  clear: both;
 	position: relative;
 	bottom: 0;
 	font-family: "retro";
@@ -235,7 +235,6 @@ footer{
 	width: 100%;
 	text-align: left;
 	font: bold 16px;
- 
 	padding: 55px 50px;
 	margin-top: 80px;
 }
@@ -416,5 +415,72 @@ footer{
   background-color: red;
   padding: 0.1em .5em;
   position: relative;
-      font-size: 1em;
+  font-size: 1em;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.game{
+  float: left;
+  padding-left: 300px;
+}
+
+.gameSettings {
+  float: right;
+  grid-area: sidebar;
+  font-family: 'retro';
+  font-size: 12px;
+  color: #fff;
+  padding-left: 20px;
+  padding-right: 250px;
+  padding-top: 30px;
+  width: 150px;
+}
+
+.gameSettings input[type='text'],
+.gameSettings input[type='number'] {
+  background-color: black;
+  font-family: 'retro';
+  font-size: 12px;
+  color: #fff;
+}
+
+.gameSettings label > span {
+  display: inline-block;
 }

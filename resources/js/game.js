@@ -11,11 +11,15 @@ var start_time;
 var time_elapsed;
 var interval;
 var ghostInterval;
+var penguinInterval;
+var candyInterval;
+var pizzaInterval;
 var keyUp;
 var keyDown;
 var keyLeft;
 var keyRight;
 var numBalls;
+var totalBalls;
 var numMonsters;
 var color5P;
 var color15P;
@@ -62,9 +66,10 @@ function Start(
     totalTime,
     playerUserName
   );
-
+  //canvas.style.display='block';
   document.getElementById("song").loop;
-  document.getElementById("song").play();
+  //document.getElementById("song").play();
+  drawSettings();
 
   var keys = {};
   window.addEventListener("keydown",
@@ -130,10 +135,9 @@ function Start(
   );
   interval = setInterval(UpdatePosition, 100);
   ghostInterval = setInterval(ghostsUpdatePosition, 500);
-  setInterval(penguinUpdatePosition, 500);
-  setInterval(showCandy, 8000);
-  setInterval(showPizza, 10000);
-  //setInterval(showPizzaSlowMotion, 1000);
+  penguinInterval = setInterval(penguinUpdatePosition, 500);
+  candyInterval = setInterval(showCandy, 8000);
+  pizzaInterval = setInterval(showPizza, 10000);
 }
 
 function setup(
@@ -152,6 +156,7 @@ function setup(
   context = canvas.getContext('2d');
   lifecontext = canvaslife.getContext('2d');
   time = totalTime;
+  totalBalls = numOfBalls;
   numBalls = numOfBalls;
   color5P = color1;
   color15P = color2;
@@ -380,18 +385,16 @@ function UpdatePosition() {
   var currentTime = new Date();
   time_elapsed = (currentTime - start_time) / 1000;
   if (time_elapsed >=  time) {
-    gameOver();
-  }
-  if (score >= 20 && time_elapsed <= 10) {
-    pac_color = 'green';
-  }
-  if (score >= 500 /* 50 */) {
-    document.getElementById("song").pause();
-    document.getElementById("song").currentTime = 0;
+    if (score >= 100) {
+      gameOver("Winner!!!");
+    }
 
-    window.clearInterval(interval);
-    window.alert('Game completed');
-  } else {
+    else {
+      gameOver("You are better than " + score + " points!");
+    }
+  }
+
+  else {
     Draw();
   }
 }
@@ -523,7 +526,7 @@ function getBestMove(k) {
 
     //the player has no life
     if (life == 0) {
-      gameOver();
+      gameOver("Loser!");
     }
 
     else {
@@ -585,10 +588,27 @@ function getLegalPenguinMove() {
   return movements;
 }
 
-function gameOver() {
+function gameOver(message) {
+  //pause song
   document.getElementById("song").pause();
   document.getElementById("song").currentTime = 0;
-  alert("Your'e a looser! :( :( :(")
+
+  //clear the window
+  window.clearInterval(interval);
+  window.clearInterval(ghostInterval);
+  window.clearInterval(penguinInterval);
+  window.clearInterval(candyInterval);
+  window.clearInterval(pizzaInterval);
+
+  var modal = document.getElementById("endGame");
+  modal.style.display = "block";
+  lblMessage.value = message;
+}
+
+function restartGame() {
+  var modal = document.getElementById("endGame");
+  modal.style.display = "none";
+  Start(keyUp, keyDown, keyLeft, keyRight, totalBalls, numMonsters, color5P, color15P, color25P, time, playerUserName);
 }
 
 function initWalls() {

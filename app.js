@@ -67,7 +67,6 @@ function startNewGame(numBalls, color1, color2, color3, time, numMonsters) {
 	if (validSettings()){
 		showGame();
 		Start(keyUp, keyDown, keyLeft, keyRight, numBalls, numMonsters, color1, color2, color3, time, playerUserName);
-		alert("Start the game");
 	}
 
 }
@@ -119,55 +118,54 @@ function keyPressed(event) {
 }
 
 function showWelcome() {
-	$(".welcome").show();
-	$(".signUp").hide();
-	$(".login").hide();
-	$(".settings").hide();
-	$(".board").hide();
-	$(".about").hide();
+	$("#welcome").show();
+	$("#signUp").hide();
+	$("#login").hide();
+	$("#settings").hide();
+	$("#board").hide();
+	$("#about").hide();
+	$('#game').hide();
+	$('#gameSettings').hide();
 }
 
 function showSignUp(){
-	$(".signUp").show();
-	$(".welcome").hide();
-	$(".login").hide();
-	$(".settings").hide();
-	$(".board").hide();
-	$(".about").hide();
+	$("#signUp").show();
+	$("#welcome").hide();
+	$("#login").hide();
+	$("#settings").hide();
+	$("#board").hide();
+	$('#game').hide();
+	$('#gameSettings').hide();
 }
 
 function showLogin(){
-	$(".login").show();
-	$(".welcome").hide();
-	$(".signUp").hide();
-	$(".settings").hide();
-	$(".board").hide();
-	$(".about").hide();
-}
-
-function showAbout(){
-	$(".about").show();
-	$(".welcome").hide();
-	$(".login").hide();
-	$(".signUp").hide();
-	$(".settings").hide();
-	$(".board").hide();
+	$("#login").show();
+	$("#welcome").hide();
+	$("#signUp").hide();
+	$("#settings").hide();
+	$("#board").hide();
+	$('#game').hide();
+	$('#gameSettings').hide();
 }
 
 function showSettings(){
-	$(".settings").show();
-	$(".about").hide();
-	$(".welcome").hide();
-	$(".login").hide();
-	$(".signUp").hide();
-	$(".board").hide();
+	$("#settings").show();
+	$("#welcome").hide();
+	$("#login").hide();
+	$("#signUp").hide();
+	$("#board").hide();
+	$('#game').hide();
+	$('#gameSettings').hide();
 }
 
 function showGame() {
-	$(".welcome").hide();
-	$(".signUp").hide();
-	$(".login").hide();
-	$(".board").show();
-	$(".settings").hide();
+	$('#board').show();
+	$('#game').show();
+	$('#gameSettings').show();
+	$("#welcome").hide();
+	$("#signUp").hide();
+	$("#login").hide();
+	$("#settings").hide();
 }
+
 

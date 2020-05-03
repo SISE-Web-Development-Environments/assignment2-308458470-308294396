@@ -35,12 +35,12 @@
 					<li class="active1"><a onclick="showWelcome()" href="#welcome">Welcome</a></li>
 					<li class="active2"><a onclick="showSignUp()" href="#signUp">Register</a></li>
 					<li class="active3"><a onclick="showLogin()" href="#login">Login</a></li>
-					<li id="aboutButton" class="active4"><a onclick="openAbout()">About</a></li>
+					<li id="aboutButton" class="active4"><a onclick="openAbout()" href="#about">About</a></li>
 				</ul>
 			</header>
 
 			<div class="content">
-				<div id="welcome" class="welcome" style="display:none;">
+				<div id="welcome" class="section" style="display:none;">
 					<h2 class="headers">Welcome!</h2>
 					<label>
 						<span> </span><input type="button" class="buttons" value="Sign Up" onclick="showSignUp()">
@@ -52,7 +52,7 @@
 					<img id="hello" class="msWelcome" src="resources/images/hello.png" alt="hello">
 				</div>
 	
-				<div id="signUp" class="signUp" style="display:none;">
+				<div id="signUp" class="section" style="display:none;">
 					<form id="signUpForm" class="form-style-4">
 						<h3 class="headers">Sign Up</h3>
 						<label for="useName">
@@ -88,7 +88,7 @@
 					</form>
 				</div>
 	
-				<div id="login" class="login" style="display:none;">
+				<div id="login" class="section" style="display:none;">
 					<form class="form-style-4"> 
 						<h4 class="headers">Login</h4>
 						<div>
@@ -108,7 +108,7 @@
 					</form>
 				</div>
 	
-				<div id="settings" class="settings" style="display:none;">
+				<div id="settings" class="section" style="display:none;">
 					<form id="settingsForm" class="form-style-4">
 						<h5 class="headers">Settings</h5>
 						<div>
@@ -227,7 +227,7 @@
 							<canvas id="canvaslife" height="30" width="300"></canvas>
 						</div>
 					</div>
-					<div id="game">
+					<div id="game" class="game">
 						<canvas id="canvas" height="450" width="450"></canvas>
 						<img id="blueGhost" src="resources/images/blueGhost.png" alt="inky" style="display: none">
 						<img id="orangeGhost" src="resources/images/orangeGhost.png" alt="clyde" style="display: none">
@@ -250,6 +250,59 @@
 						<audio class="fruit" src="resources/sounds/fruit.wav" ></audio>
 						<audio class="speical" src="resources/sounds/speical.wav" ></audio>
 					</div>	
+					<div id="gameSettings" class="gameSettings">
+						<div>
+							<label for="lblKeyUp">
+							<span>Key Up</span><input id="lblKeyUp" type="text" disabled>
+							</label>
+						</div>
+						<div>
+							<label for="lblKeyDown">Key Down</label>
+							<input id="lblKeyDown" type="text" disabled>
+						</div>
+						<div>
+							<label for="lblKeyLeft"></label>Key Left</label>
+							<input id="lblKeyLeft" type="text" disabled>
+						</div>
+						<div>
+							<label for="lblKeyRight">Key Right</label>
+							<input id="lblKeyRight" type="text" disabled>
+						</div>
+						<div>
+							<label for="lblNumBalls">Number of Balls</label>
+							<input id="lblNumBalls" type="number" disabled>
+						</div>
+						<div>
+							<label for="lbl5Color">5 points ball color</label>
+							<input id="lbl5Color" type="text" disabled>
+						</div>
+						<div>
+							<label for="lbl15Color">15 points ball color</label> 
+							<input id="lbl15Color" type="text" disabled>
+						</div>
+						<div>
+							<label for="lbl25Color">25 points ball color</label>
+							<input id="lbl25Color" type="text"disabled> 
+						</div>
+						<div>
+							<label for="lblTimeChosen">Time for game</lable>
+							<input id="lblTimeChosen" type="text" disabled>
+						</div>
+						<div>
+							<label for="lblNumGhosts">Number of ghosts</label>
+							<input id="lblNumGhosts" type="number" disabled>
+						</div>
+					</div>
+
+					<div id="endGame" class="modal">
+						<div class="modal-content">
+							<span class="close">&times;</span>
+							<label for="lblMessage"></label>
+							<input id="lblMessage" type="text" disabled>
+							<input type="button" value="Start New Game" class="buttons" onclick="restartGame()"/>
+						</div>
+					
+					</div>
 				</div>
 			</div>
 		</div>
@@ -272,8 +325,8 @@
 			<div class="footer-center">
 				<div>
 				<i class="fa fa-envelope"></i>
-				<p><a href="mailto:support@company.com">contact@webdevtrick.com</a></p>
-				<p><a href="mailto:support@company.com">contact@webdevtrick.com</a></p>
+				<p><a href="mailto:yaarm@post.bgu.ac.il">yaarm@post.bgu.ac.il</a></p>
+				<p><a href="mailto:nachimoa@post.bgu.ac.il">nachimoa@post.bgu.ac.il</a></p>
 				</div>
 			</div>
 	 
