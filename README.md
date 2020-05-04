@@ -18,7 +18,7 @@ Yaar May-Paz 308458470 & Amit Nahimovitz 308294396
 * Adding candies that the pacman can eat and get special score (appears on and off):
   There are 3 type of candies: apple, cherry and strawberry that appears on and off and gives 30 points score.
 
-### 
+### How To Use
 
 * In the welcome screen - you can see two buttons with the two options: login & register.
 * You can also go to the login and register via the menu.
