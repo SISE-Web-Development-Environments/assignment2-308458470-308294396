@@ -119,6 +119,9 @@ function showWelcome() {
 	$('#game').hide();
 	$('#gameSettings').hide();
 	$('#endGame').hide();
+	//pause song
+	document.getElementById('song').pause();
+	document.getElementById('song').currentTime = 0;
 }
 
 function showSignUp(){
@@ -130,6 +133,9 @@ function showSignUp(){
 	$('#game').hide();
 	$('#gameSettings').hide();
 	$('#endGame').hide();
+	//pause song
+	document.getElementById('song').pause();
+	document.getElementById('song').currentTime = 0;
 }
 
 function showLogin(){
@@ -141,6 +147,9 @@ function showLogin(){
 	$('#game').hide();
 	$('#gameSettings').hide();
 	$('#endGame').hide();
+	//pause song
+	document.getElementById('song').pause();
+	document.getElementById('song').currentTime = 0;
 }
 
 function showSettings(){
