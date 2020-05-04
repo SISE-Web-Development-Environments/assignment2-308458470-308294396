@@ -621,8 +621,8 @@ function gameOver(message) {
   window.clearInterval(pizzaInterval);
 
   var modal = document.getElementById('endGame');
-  modal.style.display = 'block';
   lblMessage.value = message;
+  modal.style.display = 'block';
 }
 
 function restartGame() {

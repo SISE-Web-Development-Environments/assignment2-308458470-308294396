@@ -64,11 +64,11 @@ function validRegisteration() {
 
 $.validator.addMethod("legalPassword", function(value, element) {
     return this.optional( element ) || /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/.test( value );
-}, "Your password should contains letters and numbers.");
+}, "Your password should contain letters and numbers.");
 
 $.validator.addMethod("legalName", function(value, element) {
     return this.optional( element ) || /^[a-zA-Z]+$/.test( value );
-}, "Your name should contains only letters.");
+}, "Your name should contain only letters.");
 
 $.validator.addMethod("legalEmail", function(value, element) {
     return this.optional( element ) || /\S+@\S+\.\S+/.test( value );

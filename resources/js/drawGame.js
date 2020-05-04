@@ -9,7 +9,8 @@ function Draw() {
 
   lblPlayer.value = playerName;
   lblScore.value = score;
-  lblTime.value = time - time_elapsed;
+  var remainTime = time - time_elapsed
+  lblTime.value = remainTime.toFixed(2);
   drawLife();
 
   for (var i = 0; i < 15; i++) {

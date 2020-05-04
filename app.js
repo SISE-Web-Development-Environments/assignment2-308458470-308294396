@@ -32,6 +32,7 @@ function register(userName, pass, email, firstName, lastName, dateOfBirth) {
 			dateOfBirth: dateOfBirth
 			});
 		sessionStorage.setItem("names", JSON.stringify(storedNames));
+		document.getElementById("signUpForm").reset();
 		showWelcome();
 	}
 }
@@ -43,6 +44,7 @@ function checkUserInDB(username, passw) {
 	 	if(user.userName == username && user.pass == passw){
 			 isUserFound = true;
 			 playerUserName = user.userName;
+			 document.getElementById("loginFrom").reset();
 			 showSettings();
 		 }
 	})
@@ -55,6 +57,7 @@ function checkUserInDB(username, passw) {
 function startNewGame(numBalls, color1, color2, color3, time, numMonsters) {
 	if (validSettings()){
 		showGame();
+		document.getElementById("settingsForm").reset();
 		Start(keyUp, keyDown, keyLeft, keyRight, numBalls, numMonsters, color1, color2, color3, time, playerUserName);
 	}
 
