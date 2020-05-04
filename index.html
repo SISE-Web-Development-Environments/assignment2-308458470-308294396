@@ -369,5 +369,13 @@
 				$('#aboutModal').dialog("close");
 			});  
 		</script>
+
+		<script>
+			$(document).keydown(function(event) { 
+				if (event.keyCode == 27) { 
+					$('#aboutModal').dialog("close");
+				}
+				});
+		</script>
 	</body>
 </html>
