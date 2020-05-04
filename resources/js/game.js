@@ -66,26 +66,36 @@ function Start(
     totalTime,
     playerUserName
   );
-  document.getElementById("song").loop;
-  document.getElementById("song").play();
+  document.getElementById('song').loop = true;
+  document.getElementById('song').play();
   drawSettings();
 
   var keys = {};
-  window.addEventListener("keydown",
-      function(e){
-          keys[e.keyCode] = true;
-          switch(e.keyCode){
-              case 37: case 39: case 38:  case 40: // Arrow keys
-              case 32: e.preventDefault(); break; // Space
-              default: break; // do not block other keys
-          }
-      },
-  false);
-  window.addEventListener('keyup',
-      function(e){
-          keys[e.keyCode] = false;
-      },
-  false);
+  window.addEventListener(
+    'keydown',
+    function (e) {
+      keys[e.keyCode] = true;
+      switch (e.keyCode) {
+        case 37:
+        case 39:
+        case 38:
+        case 40: // Arrow keys
+        case 32:
+          e.preventDefault();
+          break; // Space
+        default:
+          break; // do not block other keys
+      }
+    },
+    false
+  );
+  window.addEventListener(
+    'keyup',
+    function (e) {
+      keys[e.keyCode] = false;
+    },
+    false
+  );
 
   var cnt = 100;
   var pacman_remain = 1;
@@ -97,8 +107,10 @@ function Start(
           var ballPick = getRandomBall();
           updateBallsCounter(ballPick);
           board[i][j] = ballPick;
-        } 
-        else if (isCellEmpty() && randomNum < (1.0 * (pacman_remain + numBalls)) / cnt) {
+        } else if (
+          isCellEmpty() &&
+          randomNum < (1.0 * (pacman_remain + numBalls)) / cnt
+        ) {
           shape.i = i;
           shape.j = j;
           pacman_remain--;
@@ -251,7 +263,7 @@ function setGhostsOnBoard() {
 function setGhostLocation(ghostNum) {
   var x1;
   var y1;
-  switch(ghostNum) {
+  switch (ghostNum) {
     case 3:
       x1 = 13;
       y1 = 13;
@@ -277,21 +289,17 @@ function setPenguinOnBoard() {
   if (isCellEmpty(1, 13)) {
     penguinShape.i = 1;
     penguinShape.j = 13;
-  }
-  else if (isCellEmpty(13,1)) {
+  } else if (isCellEmpty(13, 1)) {
     penguinShape.i = 13;
     penguinShape.j = 1;
-  }
-  else if (isCellEmpty(13, 13)) {
+  } else if (isCellEmpty(13, 13)) {
     penguinShape.i = 13;
     penguinShape.j = 13;
-  }
-  else {
+  } else {
     var location = findRandomEmptyCell(board);
     penguinShape.i = location[0];
     penguinShape.j = location[1];
   }
-
 }
 
 function updateBallsCounter(ballPick) {
@@ -327,7 +335,7 @@ function getRandomBall() {
 function findRandomEmptyCell(board) {
   var i = Math.floor(Math.random() * 14 + 1);
   var j = Math.floor(Math.random() * 14 + 1);
-  while (board[i][j] != 0 || !isCellEmpty(i, j) ) {
+  while (board[i][j] != 0 || !isCellEmpty(i, j)) {
     i = Math.floor(Math.random() * 14 + 1);
     j = Math.floor(Math.random() * 14 + 1);
   }
@@ -382,45 +390,45 @@ function UpdatePosition() {
   board[shape.i][shape.j] = 2;
   var currentTime = new Date();
   time_elapsed = (currentTime - start_time) / 1000;
-  if (time_elapsed >=  time) {
+  if (time_elapsed >= time) {
     if (score >= 100) {
-      gameOver("Winner!!!");
+      gameOver('Winner!!!');
+    } else {
+      gameOver('You are better than ' + score + ' points!');
     }
-
-    else {
-      gameOver("You are better than " + score + " points!");
-    }
-  }
-
-  else {
+  } else {
     Draw();
   }
 }
 
 function updateScore(ballType) {
   //catch the penguin
-  if (shape.i == penguinShape.i && shape.j == penguinShape.j) {
+  if (
+    isPenguinAlive &&
+    shape.i == penguinShape.i &&
+    shape.j == penguinShape.j
+  ) {
     $('.speical').get(0).play();
-    score+=50;
+    score += 50;
     isPenguinAlive = false;
   }
 
-  switch(ballType) {
+  switch (ballType) {
     case 5:
-      score+=5;
+      score += 5;
       $('.ball').get(0).play();
       break;
     case 15:
-        score+=15;
-        $('.ball').get(0).play();
-        break;
+      score += 15;
+      $('.ball').get(0).play();
+      break;
     case 25:
-      score+=25;
+      score += 25;
       $('.ball').get(0).play();
       break;
     case 30:
       $('.fruit').get(0).play();
-      score+=30;
+      score += 30;
       break;
     case 7:
       board[pizzaLocation.i][pizzaLocation.j] = 0;
@@ -445,7 +453,8 @@ function getBestMove(k) {
   //ghost go up
   if (
     ghostLocations[k].j > 0 &&
-    board[ghostLocations[k].i][ghostLocations[k].j - 1] != 4 && isCellEmpty()
+    board[ghostLocations[k].i][ghostLocations[k].j - 1] != 4 &&
+    isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i, 2) +
@@ -462,7 +471,8 @@ function getBestMove(k) {
   //ghost go down
   if (
     ghostLocations[k].j < 14 &&
-    board[ghostLocations[k].i][ghostLocations[k].j + 1] != 4 && isCellEmpty()
+    board[ghostLocations[k].i][ghostLocations[k].j + 1] != 4 &&
+    isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i, 2) +
@@ -480,7 +490,8 @@ function getBestMove(k) {
   //ghost go left
   if (
     ghostLocations[k].i > 0 &&
-    board[ghostLocations[k].i - 1][ghostLocations[k].j] != 4 && isCellEmpty()
+    board[ghostLocations[k].i - 1][ghostLocations[k].j] != 4 &&
+    isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i - 1, 2) +
@@ -498,7 +509,8 @@ function getBestMove(k) {
   //ghost go right
   if (
     ghostLocations[k].i < 14 &&
-    board[ghostLocations[k].i + 1][ghostLocations[k].j] != 4 && isCellEmpty()
+    board[ghostLocations[k].i + 1][ghostLocations[k].j] != 4 &&
+    isCellEmpty()
   ) {
     tmpDistance = Math.sqrt(
       Math.pow(shape.i - ghostLocations[k].i + 1, 2) +
@@ -520,14 +532,12 @@ function getBestMove(k) {
   if (board[ghostLocations[k].i][ghostLocations[k].j] == 2) {
     board[ghostLocations[k].i][ghostLocations[k].j] = 0;
     life--;
-    score=-10;
+    score -= 10;
 
     //the player has no life
     if (life == 0) {
-      gameOver("Loser!");
-    }
-
-    else {
+      gameOver('Loser!');
+    } else {
       var location = findRandomEmptyCell(board);
       shape.i = location[0];
       shape.j = location[1];
@@ -535,51 +545,63 @@ function getBestMove(k) {
       setGhostsOnBoard();
     }
   }
-
 }
 
 function penguinUpdatePosition() {
-  var movements = getLegalPenguinMove();
-  var chosenMove = movements[Math.floor(Math.random() * movements.length)];
+  if (isPenguinAlive) {
+    var movements = getLegalPenguinMove();
+    var chosenMove = movements[Math.floor(Math.random() * movements.length)];
 
-  switch(chosenMove) {
-    case 0:
-      penguinShape.j--;
-      break;
-    case 1:
-      penguinShape.j++;
-      break;
-    case 2:
-      penguinShape.i--;
-      break;
-    case 3:
-      penguinShape.i++;
-      break;
+    switch (chosenMove) {
+      case 0:
+        penguinShape.j--;
+        break;
+      case 1:
+        penguinShape.j++;
+        break;
+      case 2:
+        penguinShape.i--;
+        break;
+      case 3:
+        penguinShape.i++;
+        break;
+    }
+
+    //meet the pacmen
+    if (board[penguinShape.i][penguinShape.j] == 2) {
+      isPenguinAlive = false;
+    }
   }
-
-  //meet the pacmen
-  if (board[penguinShape.i][penguinShape.j] == 2) {
-    isPenguinAlive = false;
-  }
-
 }
 
 function getLegalPenguinMove() {
   var movements = [];
   //up
-  if (board[penguinShape.i][penguinShape.j - 1] != 4 && isCellEmpty(penguinShape.i, penguinShape.j - 1)) {
+  if (
+    board[penguinShape.i][penguinShape.j - 1] != 4 &&
+    isCellEmpty(penguinShape.i, penguinShape.j - 1)
+  ) {
     movements.push(0);
   }
   //down
-  if (board[penguinShape.i][penguinShape.j + 1] != 4 && isCellEmpty(penguinShape.i, penguinShape.j + 1)) {
+  if (
+    board[penguinShape.i][penguinShape.j + 1] != 4 &&
+    isCellEmpty(penguinShape.i, penguinShape.j + 1)
+  ) {
     movements.push(1);
   }
   //left
-  if (board[penguinShape.i - 1][penguinShape.j] != 4 && isCellEmpty(penguinShape.i - 1, penguinShape.j)) {
+  if (
+    board[penguinShape.i - 1][penguinShape.j] != 4 &&
+    isCellEmpty(penguinShape.i - 1, penguinShape.j)
+  ) {
     movements.push(2);
   }
   //right
-  if (board[penguinShape.i + 1][penguinShape.j] != 4 && isCellEmpty(penguinShape.i + 1, penguinShape.j)) {
+  if (
+    board[penguinShape.i + 1][penguinShape.j] != 4 &&
+    isCellEmpty(penguinShape.i + 1, penguinShape.j)
+  ) {
     movements.push(3);
   }
 
@@ -588,8 +610,8 @@ function getLegalPenguinMove() {
 
 function gameOver(message) {
   //pause song
-  document.getElementById("song").pause();
-  document.getElementById("song").currentTime = 0;
+  document.getElementById('song').pause();
+  document.getElementById('song').currentTime = 0;
 
   //clear the window
   window.clearInterval(interval);
@@ -598,15 +620,27 @@ function gameOver(message) {
   window.clearInterval(candyInterval);
   window.clearInterval(pizzaInterval);
 
-  var modal = document.getElementById("endGame");
-  modal.style.display = "block";
+  var modal = document.getElementById('endGame');
+  modal.style.display = 'block';
   lblMessage.value = message;
 }
 
 function restartGame() {
-  var modal = document.getElementById("endGame");
-  modal.style.display = "none";
-  Start(keyUp, keyDown, keyLeft, keyRight, totalBalls, numMonsters, color5P, color15P, color25P, time, playerUserName);
+  var modal = document.getElementById('endGame');
+  modal.style.display = 'none';
+  Start(
+    keyUp,
+    keyDown,
+    keyLeft,
+    keyRight,
+    totalBalls,
+    numMonsters,
+    color5P,
+    color15P,
+    color25P,
+    time,
+    playerUserName
+  );
 }
 
 function initWalls() {
