@@ -91,7 +91,7 @@ function validSettings() {
                 required: true,
                 diffKeys: true
             },
-            numBalls: {
+            numOfBalls: {
                 required: true,
                 min: 50,
                 max: 90
@@ -111,7 +111,7 @@ function validSettings() {
                 color3NotChosen: true,
                 diffColors: true
             },
-            time: {
+            timeOfGame: {
                 required: true,
                 min: 60
             },
@@ -134,9 +134,9 @@ function validSettings() {
             keyRight: {
                 required: "Please press a key"
             },
-            numBalls: {
+            numOfBalls: {
                 required: "Please choose number of balls",
-                min: "The minumun number of balls is 60",
+                min: "The minumun number of balls is 50",
                 max: "The minumun number of balls is 90"
             },
             Color1: {
@@ -149,7 +149,7 @@ function validSettings() {
             Color3: {
                 required:  "Please choose the third color",
             },
-            time: {
+            timeOfGame: {
                 required:  "Please define the time",
                 min:  "The minumun time is 60 seconds"
             },

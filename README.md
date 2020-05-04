@@ -29,6 +29,6 @@ Yaar May-Paz 308458470 & Amit Nahimovitz 308294396
 * In the game settings you can define the differnt setting manualy or press the button "Random Setting"   and they will fill out. After press "Start new game" you'll be passed to the game page.
 * On the game page - on top you can see the player name, score, time remains and lives.
   On the center you can see the board of the game and on the left you can see the settings you chosen.
-  You need to move by the keyboard you chose, every ball you eat - credit you points (5 / 15 /25 according to the color of the ball). Different candie will appear alternately - if you eat them you'll get 30 points. There is a penguin character that moves on the board - if you'll eat it, you will get 50 points! Try to catch it :) 
-  There's ghosts on the board that tries to hit you - on each hit you'll lose one lift and 10 points - Try to get away from them! 
+  You need to move by the keyboards you chose, every ball you eat - credit you points (5 / 15 /25 according to the color of the ball). Different candies will appear alternately - if you eat them you'll get 30 points. There is a penguin character that moves on the board - if you'll eat it, you will get 50 points! Try to catch it :) 
+  There's ghosts on the board that tries to hit you - on each hit you'll lose one life and 10 points - Try to get away from them! 
   After finish a game you'll see an option to start a new one.

@@ -524,9 +524,34 @@ function getBestMove(k) {
       };
     }
   }
+  
+  //random move from optional moves
+  var optionalMoves = getLegalMove(ghostLocations[k].i, ghostLocations[k].j);
+  var randomMove = optionalMoves[Math.floor(Math.random() * optionalMoves.length)];
 
-  ghostLocations[k].i = tmpLocation.i;
-  ghostLocations[k].j = tmpLocation.j;
+  //do best move
+  if (Math.random() < 0.6) {
+    ghostLocations[k].i = tmpLocation.i;
+    ghostLocations[k].j = tmpLocation.j;
+  }
+
+  //do random move
+  else {
+    switch (randomMove) {
+      case 0:
+        ghostLocations[k].j--;
+        break;
+      case 1:
+        ghostLocations[k].j++;
+        break;
+      case 2:
+        ghostLocations[k].i--;
+        break;
+      case 3:
+        ghostLocations[k].i++;
+        break;
+    }
+  }
 
   //hitting pacmen
   if (board[ghostLocations[k].i][ghostLocations[k].j] == 2) {
@@ -549,7 +574,7 @@ function getBestMove(k) {
 
 function penguinUpdatePosition() {
   if (isPenguinAlive) {
-    var movements = getLegalPenguinMove();
+    var movements = getLegalMove(penguinShape.i, penguinShape.j);
     var chosenMove = movements[Math.floor(Math.random() * movements.length)];
 
     switch (chosenMove) {
@@ -574,33 +599,33 @@ function penguinUpdatePosition() {
   }
 }
 
-function getLegalPenguinMove() {
+function getLegalMove(shapeX, shapeY) {
   var movements = [];
   //up
   if (
-    board[penguinShape.i][penguinShape.j - 1] != 4 &&
-    isCellEmpty(penguinShape.i, penguinShape.j - 1)
+    board[shapeX][shapeY - 1] != 4 &&
+    isCellEmpty(shapeX, shapeY - 1)
   ) {
     movements.push(0);
   }
   //down
   if (
-    board[penguinShape.i][penguinShape.j + 1] != 4 &&
-    isCellEmpty(penguinShape.i, penguinShape.j + 1)
+    board[shapeX][shapeY + 1] != 4 &&
+    isCellEmpty(shapeX, shapeY + 1)
   ) {
     movements.push(1);
   }
   //left
   if (
-    board[penguinShape.i - 1][penguinShape.j] != 4 &&
-    isCellEmpty(penguinShape.i - 1, penguinShape.j)
+    board[shapeX - 1][shapeY] != 4 &&
+    isCellEmpty(shapeX - 1, shapeY)
   ) {
     movements.push(2);
   }
   //right
   if (
-    board[penguinShape.i + 1][penguinShape.j] != 4 &&
-    isCellEmpty(penguinShape.i + 1, penguinShape.j)
+    board[shapeX + 1][shapeY] != 4 &&
+    isCellEmpty(shapeX + 1, shapeY)
   ) {
     movements.push(3);
   }

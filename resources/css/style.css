@@ -389,6 +389,12 @@ footer {
   display: inline-block;
 }
 
+.modal {
+  position: absolute;
+  top: 400px;
+  left: 400px;
+}
+
 .modal-content {
   background-color: black;
   width: 500px;
@@ -402,6 +408,7 @@ footer {
   font-family: 'retro';
   color: #fff;
   border: none;
+  padding-top:30px;
   padding-bottom: 30px;
   text-align: center;
 }
