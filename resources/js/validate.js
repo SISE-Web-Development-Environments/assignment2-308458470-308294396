@@ -27,7 +27,7 @@ function validRegisteration() {
                 email: true,
                 legalEmail: true
             },
-            dateOfBirth: {
+            date: {
                 required: true,
             }
         },
@@ -52,7 +52,7 @@ function validRegisteration() {
                 required: "Plase provide an email",
                 email: "Your email is not valid."
             },
-            dateOfBirth: {
+            date: {
                 required: "Plase provide a birthdate",
             }
         }
