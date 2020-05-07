@@ -164,6 +164,13 @@ function setup(
   totalTime,
   playerUserName
 ) {
+  //clear the window
+  window.clearInterval(interval);
+  window.clearInterval(ghostInterval);
+  window.clearInterval(penguinInterval);
+  window.clearInterval(candyInterval);
+  window.clearInterval(pizzaInterval);
+  
   context = canvas.getContext('2d');
   lifecontext = canvaslife.getContext('2d');
   time = totalTime;
