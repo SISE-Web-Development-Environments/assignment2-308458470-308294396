@@ -20,15 +20,16 @@ Yaar May-Paz 308458470 & Amit Nahimovitz 308294396
 
 ### How To Use
 
-* In the welcome screen - you can see two buttons with the two options: login & register.
-* You can also go to the login and register via the menu.
-* In the register page you need to insert a few parameters: user name, password, email, first name, last  name and date of birth. (If one of the parameters is not valid - you'll get a message on the screen).
-* In the login page you need to enter the user name & password:
-    - If the user name and password are correct - you'll pass to the game settings page immediately.
-    - Otherwise, you'll get a message refering it.
-* In the game settings you can define the differnt setting manualy or press the button "Random Setting"   and they will fill out. After press "Start new game" you'll be passed to the game page.
-* On the game page - on top you can see the player name, score, time remains and lives.
-  On the center you can see the board of the game and on the left you can see the settings you chosen.
-  You need to move by the keyboards you chose, every ball you eat - credit you points (5 / 15 /25 according to the color of the ball). Different candies will appear alternately - if you eat them you'll get 30 points. There is a penguin character that moves on the board - if you'll eat it, you will get 50 points! Try to catch it :) 
-  There's ghosts on the board that tries to hit you - on each hit you'll lose one life and 10 points - Try to get away from them! 
-  After finish a game you'll see an option to start a new one.
+1. First, please refer to the registration page and fill out the form successfully. Make sure your password is at least 6 characters long and contains both letters and numbers.
+2. Login to the system with your username and password.
+3. After succsessfully login you will be transfered to the game settings, where you can either determine the settings manualy or choose "Random Settings".
+4. Press "Start New Game".
+5. About the game:
+  on top you can see the player name, score, time remains and number of lives.
+  You need to move by pressing the keyboards you chose. 
+  Every ball or candies you eat - credit you points.
+  The penguin character is worth 50 points - Try to catch it!
+  The pizza symbol credits you with extra life.
+  Every time a ghost catches you, one life and 10 points will reduced.
+   
+  Enjoy! :)
