@@ -8,7 +8,7 @@ Link to the website:  https://sise-web-development-environments.github.io/assign
 
 ### Authors
 
-Yaar May-Paz 308458470 & Amit Nahimovitz 308294396
+Yaar May-Paz 308458470 & Amit Nachimovitz 308294396
 
 ### Functionality
 
