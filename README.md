@@ -2,7 +2,7 @@
  
 
 ## App Info
-Link to the website: https://sise-web-development-environments.github.io/assignment2-yaar-amit/
+Link to the website:  https://sise-web-development-environments.github.io/assignment2-308458470-308294396/
 
 > The "Ms.Pacman" web app created using Html, CSS, and JS as part of the second assignment in the "Web Development Environments" course.
 
